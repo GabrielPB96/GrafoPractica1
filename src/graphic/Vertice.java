@@ -1,6 +1,6 @@
 package graphic;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class Vertice {
     private double xC, yC;
@@ -13,5 +13,9 @@ public class Vertice {
         this.xC = xC;
         this.yC = yC;
         this.color = new Color(50, 133, 206);
+    }
+
+    public void paint(Graphics2D g) {
+
     }
 }

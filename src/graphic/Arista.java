@@ -1,6 +1,6 @@
 package graphic;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class Arista {
     private double peso;
@@ -14,5 +14,9 @@ public class Arista {
         this.yDestino = yDestino;
         this.color = new Color(0,0,0);
         this.peso  = 0;
+    }
+
+    public void paint(Graphics2D g) {
+
     }
 }
