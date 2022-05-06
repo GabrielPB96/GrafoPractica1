@@ -8,4 +8,8 @@ public class Vertice {
         this.valor = valor;
         this.peso  = peso;
     }
+
+    public int getValor() {
+        return this.valor;
+    }
 }

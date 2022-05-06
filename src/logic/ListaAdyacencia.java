@@ -3,7 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListaAdyacencia {
+public class ListaAdyacencia implements Grafo{
     private HashMap<Integer, ArrayList<Vertice>> grafo;
     private boolean dirigido;
     private int cantVertices, cantAristas;
@@ -52,9 +52,10 @@ public class ListaAdyacencia {
         ArrayList<Vertice> adjO = grafo.get(origen);
         boolean existe = false;
         if (adjO != null) {
-
+            for (int i=0; i<adjO.size() && !existe; i++) {
+                existe = adjO.get(i).getValor() == destino;
+            }
         }
-
         return existe;
     }
 
