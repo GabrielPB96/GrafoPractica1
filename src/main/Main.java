@@ -13,7 +13,7 @@ public class Main {
             grafo.insertarVertice(v);
         }
 
-        grafo.insertarArista(1, 2);
+        grafo.insertarArista(1, 2, 5);
         grafo.insertarArista(1, 3);
         grafo.insertarArista(2, 3);
         grafo.insertarArista(2, 4);
@@ -23,5 +23,7 @@ public class Main {
         System.out.println(grafo.existeArista(1, 2));
         System.out.println(grafo.existeArista(1, 3));
         System.out.println(grafo.existeArista(1, 4));
+
+        System.out.println(grafo.getPesoArista(1, 2));
     }
 }

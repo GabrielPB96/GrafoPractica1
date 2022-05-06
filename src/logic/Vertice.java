@@ -12,4 +12,8 @@ public class Vertice {
     public int getValor() {
         return this.valor;
     }
+
+    public double getPeso() {
+        return peso;
+    }
 }

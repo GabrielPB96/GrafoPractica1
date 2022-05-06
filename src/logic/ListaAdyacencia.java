@@ -59,8 +59,17 @@ public class ListaAdyacencia implements Grafo{
         return existe;
     }
 
-    public double getPesoArista(int i, int j) {
-        return 0.0;
+    public double getPesoArista(int i, int j){
+        ArrayList<Vertice> adj = grafo.get(i);
+        double peso = 0;
+        Vertice v = null;
+        if (adj != null) {
+            for (int k = 0; k < adj.size() && v == null; k++) {
+                if (adj.get(k).getValor() == j) v = adj.get(k);
+            }
+            peso = v.getPeso();
+        }
+        return peso;
     }
 
     //public ArrayList<Adyacente> getAdyacentes(int vertice);/// valor de retorno puede ser diferente
