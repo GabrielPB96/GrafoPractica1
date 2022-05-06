@@ -19,7 +19,7 @@ public class BuilderArista {
         return this;
     }
 
-    public BuilderArista setPeso(int p) {
+    public BuilderArista setPeso(double p) {
         this.arista.setPeso(p);
         return this;
     }

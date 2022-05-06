@@ -8,15 +8,15 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
-public class Panel extends JPanel {
+public class GraphPanel extends JPanel {
     private ArrayList<Vertice> vertices;
     private ArrayList<Arista> aristas;
     private Vertice clickedVertice;
     private final Manejador manejador = new Manejador();
 
-    private int a, b;
+    public static int a, b;
 
-    public Panel(int a, int b) {
+    public GraphPanel(int a, int b) {
         this.a = a;
         this.b = b;
         addMouseMotionListener(manejador);
@@ -26,10 +26,22 @@ public class Panel extends JPanel {
         aristas = new ArrayList<>();
     }
 
+    public void addVertices(Vertice[] v) {
+        for (Vertice vertice : v) {
+            vertices.add(vertice);
+        }
+    }
+
+    public void addAristas(Arista[] a) {
+        for (Arista aris : a) {
+            addArista(aris);
+        }
+    }
+
     public void addVertices(char[] vert) {
         for (char ver : vert) {
             Vertice v = new BuilderVertice()
-                    .setRandomLocation(a, b)
+                    .setRandomLocation()
                     .setEtiqueta(ver)
                     .build();
             addVertice(v);
@@ -43,6 +55,7 @@ public class Panel extends JPanel {
             Arista a = new BuilderArista()
                     .setOrigen(o)
                     .setDestino(d)
+                    .setPeso(a1.getPeso())
                     .build();
             addArista(a);
         }
@@ -76,6 +89,7 @@ public class Panel extends JPanel {
     }
 
     public void searchClickedVertice(double x, double y) {
+        clickedVertice = null;
         for (Vertice v : vertices) {
             if (v.contains(x, y)) {
                 clickedVertice = v;
@@ -85,22 +99,7 @@ public class Panel extends JPanel {
 
     private class Manejador extends MouseAdapter {
         @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getButton() == MouseEvent.BUTTON3) {
-                searchClickedVertice(e.getX(), e.getY());
-                System.out.println(clickedVertice);
-            }else {
-                Vertice v = new BuilderVertice()
-                        .setPunto(new Punto(e.getX(), e.getY()))
-                        .build();
-                vertices.add(v);
-                repaint();
-            }
-        }
-
-        @Override
         public void mouseDragged(MouseEvent e) {
-            searchClickedVertice(e.getX(), e.getY());
             if (clickedVertice != null) {
                 clickedVertice.setLocation(new Punto(e.getX(), e.getY()));
                 repaint();
@@ -108,8 +107,18 @@ public class Panel extends JPanel {
         }
 
         @Override
-        public void mouseReleased(MouseEvent e) {
-            clickedVertice = null;
+        public void mouseClicked(MouseEvent e) {
+            searchClickedVertice(e.getX(), e.getY());
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            searchClickedVertice(e.getX(), e.getY());
+            if (clickedVertice != null) {
+                setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }else{
+                setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
         }
     }
 }

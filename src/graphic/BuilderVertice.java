@@ -24,9 +24,9 @@ public class BuilderVertice {
         return this;
     }
 
-    public BuilderVertice setRandomLocation(int a, int b) {
-        int x = ((int) (Math.random() *  (b-a))) + a;
-        int y = ((int) (Math.random() *  (b-a))) + a;
+    public BuilderVertice setRandomLocation() {
+        int x = ((int) (Math.random() *  (GraphPanel.b-GraphPanel.a))) + GraphPanel.a;
+        int y = ((int) (Math.random() *  (GraphPanel.b-GraphPanel.a))) + GraphPanel.a;
         this.vertice.setLocation(new Punto(x, y));
         return this;
     }

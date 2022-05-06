@@ -8,7 +8,7 @@ public class Arista {
     private Color color;
 
     public Arista() {
-        peso = 0;
+        peso = Double.MIN_VALUE;
         color = Color.BLACK;
     }
 
@@ -62,5 +62,10 @@ public class Arista {
         g2.setColor(color);
         g2.setStroke(new BasicStroke(3));
         g2.drawLine((int) o.getX(), (int)o.getY(), (int)d.getX(), (int)d.getY());
+        if (peso != Double.MIN_VALUE) {
+            g2.setFont(new Font("Arial", Font.PLAIN, 15));
+            g2.setColor(Color.BLUE);
+            g2.drawString(String.valueOf(peso), ((int) (o.getX() + d.getX()) / 2)+5, (int) (o.getY() + d.getY()) / 2);
+        }
     }
 }
