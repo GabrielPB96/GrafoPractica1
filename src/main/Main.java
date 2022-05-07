@@ -34,8 +34,8 @@ public class Main {
         System.out.println(grafo.existeArista(2, 1));
         System.out.println(grafo.quitarArista(1, 2));*/
 
-        System.out.println(grafo.esCompleto());
+        /*System.out.println(grafo.esCompleto());
         System.out.println(grafo.quitarArista(1,4));
-        System.out.println(grafo.esCompleto());
+        System.out.println(grafo.esCompleto());*/
     }
 }

@@ -8,11 +8,14 @@ public class ListaAdyacencia implements Grafo{
     private boolean dirigido;
     private int cantVertices, cantAristas;
 
+    private GraphicAdyacencia graficador;
+
     public ListaAdyacencia(boolean dirigido) {
         cantVertices = 0;
         cantAristas = 0;
         this.dirigido = dirigido;
         grafo = new HashMap<>();
+        graficador = new GraphicAdyacencia(this);
     }
 
     public void insertarVertice(int v) {
@@ -22,7 +25,7 @@ public class ListaAdyacencia implements Grafo{
 
     public void insertarArista(int i, int j) {
         ArrayList<Vertice> ady = grafo.get(i);
-        ady.add(new Vertice(j, 0));
+        ady.add(new Vertice(j, Double.MIN_VALUE));
         if (!dirigido) {
             ArrayList<Vertice> ady2 = grafo.get(j);
             ady2.add(new Vertice(i, 0));
@@ -77,7 +80,9 @@ public class ListaAdyacencia implements Grafo{
         return (ady != null) ? ady : new ArrayList<>();
     }
 
-    public void dibujarGrafo(){}
+    public void dibujarGrafo(){
+
+    }
 
     public boolean quitarArista(int origen, int destino) {
         boolean sePudo;
@@ -116,5 +121,9 @@ public class ListaAdyacencia implements Grafo{
     }
     public boolean existeBucle() {
         return false;
+    }
+
+    public HashMap<Integer, ArrayList<Vertice>> getGrafo() {
+        return grafo;
     }
 }
