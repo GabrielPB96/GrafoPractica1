@@ -28,7 +28,7 @@ public class ListaAdyacencia implements Grafo{
         ady.add(new Vertice(j, Double.MIN_VALUE));
         if (!dirigido) {
             ArrayList<Vertice> ady2 = grafo.get(j);
-            ady2.add(new Vertice(i, 0));
+            ady2.add(new Vertice(i, Double.MIN_VALUE));
         }
         cantAristas++;
     }
@@ -81,7 +81,7 @@ public class ListaAdyacencia implements Grafo{
     }
 
     public void dibujarGrafo(){
-
+        graficador.paint();
     }
 
     public boolean quitarArista(int origen, int destino) {

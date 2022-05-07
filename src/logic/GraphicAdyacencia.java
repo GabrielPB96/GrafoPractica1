@@ -1,5 +1,9 @@
 package logic;
 
+import graphic.Arista;
+import graphic.Graph;
+import graphic.TemplateArista;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,16 +16,23 @@ public class GraphicAdyacencia {
         this.g = grafo.getGrafo();
     }
 
+    public void paint(){
+        new Graph(construirVertices(), construirAristas());
+    }
+
     private char[] construirVertices() {
         char[] vertices = new char[grafo.getNumVertices()];
+        int p = 0;
         for (Integer key : g.keySet()) {
-            vertices[key] = (char) (key + '0');
+            vertices[p] = (char) (key + '0');
+            p++;
         }
         return vertices;
     }
 
-    /*private TemplateAristas[] construirAristas() {
+    private TemplateArista[] construirAristas() {
         TemplateArista[] aristas = new TemplateArista[grafo.getNumAristas()];
+        int p = 0;
         for(Integer key : g.keySet()){
             ArrayList<Vertice> ady = g.get(key);
             for(int i=0; i<ady.size(); i++){
@@ -30,24 +41,27 @@ public class GraphicAdyacencia {
                     TemplateArista a = new TemplateArista((char)(key+'0'), (char)(ady.get(i).getValor()+'0'));
                     if (ady.get(i).getPeso() != Double.MIN_VALUE) {
                         a.setPeso(ady.get(i).getPeso());
-                        aristas[i] = a;
                     }
+                    aristas[p] = a;
+                    p++;
                 }
             }
         }
         return aristas;
-    }*/
+    }
 
-    /*private boolean existe(int[] arista, TemplateAristas[] aristas) {
+    private boolean existe(int[] arista, TemplateArista[] aristas) {
         for (int i = 0; i < aristas.length; i++) {
             int o = arista[0], d = arista[1];
-            if ((aristas[i].getOrigen() == o && aristas[i].getDestino() == d)
-                || (aristas[i].getOrigen() == d && aristas[i].getDestino() == o))
-            {
-                return true;
+            TemplateArista v = aristas[i];
+            if (v != null) {
+                if ((v.getOrigen() == (char) (o + '0') && v.getDestino() == (char) (d + '0'))
+                        || (v.getOrigen() == (char) (d + '0') && v.getDestino() == (char) (o + '0'))) {
+                    return true;
+                }
             }
 
         }
         return false;
-    }*/
+    }
 }

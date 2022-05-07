@@ -37,4 +37,8 @@ public class TemplateArista {
     public void setDestino(char destino) {
         this.destino = destino;
     }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
 }
