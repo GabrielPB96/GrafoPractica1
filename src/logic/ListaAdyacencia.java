@@ -12,11 +12,11 @@ public class ListaAdyacencia implements Grafo{
         cantVertices = 0;
         cantAristas = 0;
         this.dirigido = dirigido;
-        grafo = new HashMap();
+        grafo = new HashMap<>();
     }
 
     public void insertarVertice(int v) {
-        grafo.put(v, new ArrayList());
+        grafo.put(v, new ArrayList<>());
         cantVertices++;
     }
 
@@ -61,20 +61,39 @@ public class ListaAdyacencia implements Grafo{
 
     public double getPesoArista(int i, int j){
         ArrayList<Vertice> adj = grafo.get(i);
-        double peso = 0;
+        double peso = Double.MIN_VALUE;
         Vertice v = null;
         if (adj != null) {
             for (int k = 0; k < adj.size() && v == null; k++) {
                 if (adj.get(k).getValor() == j) v = adj.get(k);
             }
-            peso = v.getPeso();
+            if (v != null) peso = v.getPeso();
         }
         return peso;
     }
 
     //public ArrayList<Adyacente> getAdyacentes(int vertice);/// valor de retorno puede ser diferente
+
     public void dibujarGrafo(){}
+
     public boolean quitarArista(int origen, int destino) {
+        boolean sePudo;
+        sePudo = eliminarArista(origen, destino);
+        if (!dirigido && sePudo) {
+            eliminarArista(destino, origen);
+        }
+        return sePudo;
+    }
+    private boolean eliminarArista(int o, int d){
+        ArrayList<Vertice> adj = grafo.get(o);
+        if (adj != null) {
+            for (int i = 0; i < adj.size(); i++) {
+                if (adj.get(i).getValor() == d) {
+                    adj.remove(i);
+                    return true;
+                }
+            }
+        }
         return false;
     }
     public boolean esCompleto() {

@@ -20,10 +20,16 @@ public class Main {
         grafo.insertarArista(3, 5);
         grafo.insertarArista(3, 4);
 
-        System.out.println(grafo.existeArista(1, 2));
-        System.out.println(grafo.existeArista(1, 3));
-        System.out.println(grafo.existeArista(1, 4));
+        //System.out.println(grafo.existeArista(1, 2));
+        //System.out.println(grafo.existeArista(1, 3));
+        //System.out.println(grafo.existeArista(1, 4));
+        //System.out.println(grafo.existeArista(1, 5));
 
-        System.out.println(grafo.getPesoArista(1, 2));
+
+        System.out.println(grafo.existeArista(1, 2));
+        System.out.println(grafo.existeArista(2, 1));
+        System.out.println(grafo.quitarArista(1, 2));
+        System.out.println(grafo.existeArista(1, 2));
+        System.out.println(grafo.existeArista(2, 1));
     }
 }
