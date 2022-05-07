@@ -21,21 +21,21 @@ public class ListaAdyacencia implements Grafo{
     }
 
     public void insertarArista(int i, int j) {
-        ArrayList<Vertice> adj = grafo.get(i);
-        adj.add(new Vertice(j, 0));
+        ArrayList<Vertice> ady = grafo.get(i);
+        ady.add(new Vertice(j, 0));
         if (!dirigido) {
-            ArrayList<Vertice> adj2 = grafo.get(j);
-            adj2.add(new Vertice(i, 0));
+            ArrayList<Vertice> ady2 = grafo.get(j);
+            ady2.add(new Vertice(i, 0));
         }
         cantAristas++;
     }
 
     public void insertarArista(int i, int j, double peso) {
-        ArrayList<Vertice> adj = grafo.get(i);
-        adj.add(new Vertice(j, peso));
+        ArrayList<Vertice> ady = grafo.get(i);
+        ady.add(new Vertice(j, peso));
         if (!dirigido) {
-            ArrayList<Vertice> adj2 = grafo.get(j);
-            adj2.add(new Vertice(i, peso));
+            ArrayList<Vertice> ady2 = grafo.get(j);
+            ady2.add(new Vertice(i, peso));
         }
         cantAristas++;
     }
@@ -49,30 +49,33 @@ public class ListaAdyacencia implements Grafo{
     }
 
     public boolean existeArista(int origen, int destino) {
-        ArrayList<Vertice> adjO = grafo.get(origen);
+        ArrayList<Vertice> adyO = grafo.get(origen);
         boolean existe = false;
-        if (adjO != null) {
-            for (int i=0; i<adjO.size() && !existe; i++) {
-                existe = adjO.get(i).getValor() == destino;
+        if (adyO != null) {
+            for (int i=0; i<adyO.size() && !existe; i++) {
+                existe = adyO.get(i).getValor() == destino;
             }
         }
         return existe;
     }
 
     public double getPesoArista(int i, int j){
-        ArrayList<Vertice> adj = grafo.get(i);
+        ArrayList<Vertice> ady = grafo.get(i);
         double peso = Double.MIN_VALUE;
         Vertice v = null;
-        if (adj != null) {
-            for (int k = 0; k < adj.size() && v == null; k++) {
-                if (adj.get(k).getValor() == j) v = adj.get(k);
+        if (ady != null) {
+            for (int k = 0; k < ady.size() && v == null; k++) {
+                if (ady.get(k).getValor() == j) v = ady.get(k);
             }
             if (v != null) peso = v.getPeso();
         }
         return peso;
     }
 
-    //public ArrayList<Adyacente> getAdyacentes(int vertice);/// valor de retorno puede ser diferente
+    public ArrayList<Vertice> getAdyacentes(int vertice) {
+        ArrayList<Vertice> ady = grafo.get(vertice);
+        return (ady != null) ? ady : new ArrayList<>();
+    }
 
     public void dibujarGrafo(){}
 
@@ -85,11 +88,11 @@ public class ListaAdyacencia implements Grafo{
         return sePudo;
     }
     private boolean eliminarArista(int o, int d){
-        ArrayList<Vertice> adj = grafo.get(o);
-        if (adj != null) {
-            for (int i = 0; i < adj.size(); i++) {
-                if (adj.get(i).getValor() == d) {
-                    adj.remove(i);
+        ArrayList<Vertice> ady = grafo.get(o);
+        if (ady != null) {
+            for (int i = 0; i < ady.size(); i++) {
+                if (ady.get(i).getValor() == d) {
+                    ady.remove(i);
                     cantAristas--;
                     return true;
                 }
@@ -97,18 +100,15 @@ public class ListaAdyacencia implements Grafo{
         }
         return false;
     }
-    public boolean esCompleto() {
-        long n = factorial(cantVertices);
-        long m = factorial(cantVertices - 2);
-        return n / (2*m) == cantAristas;
-    }
 
-    private long factorial(int n){
-        if(n == 0 || n == 1) return 1;
-        else return n * factorial(n-1);
+    public boolean esCompleto() {
+        int n = (cantVertices*(cantVertices-1))/2;
+        return n == cantAristas;
     }
 
     public boolean esGrafoCiclo() {
+        if (cantVertices <= 2 ) return false;
+
         return false;
     }
     public boolean esGrafoRueda() {
