@@ -24,4 +24,9 @@ public class Vector {
     public void setY(double y) {
         this.y = y;
     }
+
+    public void multiplicarEscalar(double escalar) {
+        this.x *= escalar;
+        this.y *= escalar;
+    }
 }
