@@ -90,6 +90,7 @@ public class ListaAdyacencia implements Grafo{
             for (int i = 0; i < adj.size(); i++) {
                 if (adj.get(i).getValor() == d) {
                     adj.remove(i);
+                    cantAristas--;
                     return true;
                 }
             }
@@ -97,8 +98,16 @@ public class ListaAdyacencia implements Grafo{
         return false;
     }
     public boolean esCompleto() {
-        return false;
+        long n = factorial(cantVertices);
+        long m = factorial(cantVertices - 2);
+        return n / (2*m) == cantAristas;
     }
+
+    private long factorial(int n){
+        if(n == 0 || n == 1) return 1;
+        else return n * factorial(n-1);
+    }
+
     public boolean esGrafoCiclo() {
         return false;
     }
