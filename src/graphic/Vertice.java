@@ -1,6 +1,7 @@
 package graphic;
 
-import javax.swing.*;
+import graphic.geo.Punto;
+
 import java.awt.*;
 
 public class Vertice{
@@ -33,7 +34,7 @@ public class Vertice{
         g2.setColor(color);
         g2.fillOval((int) xC - radio, (int) yC - radio, 2 * radio, 2 * radio);
         g2.setColor(Color.BLACK);
-        g2.setFont(new Font("Arial", Font.PLAIN, 15));
+        g2.setFont(new Font("Arial", Font.BOLD, 15));
         g2.drawString(etiqueta+"", ((int) xC - radio/2), (int) yC + radio/2);
     }
 

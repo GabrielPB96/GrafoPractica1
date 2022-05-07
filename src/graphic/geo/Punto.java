@@ -1,4 +1,4 @@
-package graphic;
+package graphic.geo;
 
 public class Punto {
     private double x, y;

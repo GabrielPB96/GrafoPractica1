@@ -1,11 +1,11 @@
 package graphic;
 
+import graphic.geo.Punto;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 public class GraphPanel extends JPanel {
@@ -17,6 +17,7 @@ public class GraphPanel extends JPanel {
     public static int a, b;
 
     public GraphPanel(int a, int b) {
+        setBackground(Color.WHITE);
         this.a = a;
         this.b = b;
         addMouseMotionListener(manejador);

@@ -1,5 +1,7 @@
 package graphic;
 
+import graphic.geo.Punto;
+
 import java.awt.*;
 
 public class Arista {
@@ -63,9 +65,11 @@ public class Arista {
         g2.setStroke(new BasicStroke(3));
         g2.drawLine((int) o.getX(), (int)o.getY(), (int)d.getX(), (int)d.getY());
         if (peso != Double.MIN_VALUE) {
-            g2.setFont(new Font("Arial", Font.PLAIN, 15));
+            g2.setColor(Color.WHITE);
+            g2.fillRect((int) (o.getX() + d.getX()) / 2 - 10, (int) (o.getY() + d.getY()) / 2 - 10, 30, 30);
+            g2.setFont(new Font("Arial", Font.BOLD, 15));
             g2.setColor(Color.BLUE);
-            g2.drawString(String.valueOf(peso), ((int) (o.getX() + d.getX()) / 2)+5, (int) (o.getY() + d.getY()) / 2);
+            g2.drawString(String.valueOf(peso), ((int) (o.getX() + d.getX()) / 2)-9, ((int) (o.getY() + d.getY()) / 2)+9);
         }
     }
 }

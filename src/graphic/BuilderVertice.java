@@ -1,5 +1,7 @@
 package graphic;
 
+import graphic.geo.Punto;
+
 import java.awt.*;
 
 public class BuilderVertice {
