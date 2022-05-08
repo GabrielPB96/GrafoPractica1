@@ -27,23 +27,4 @@ public class Graph extends JFrame {
         panel.addVertices(vertices);
         panel.addAristas(aristas);
     }
-
-    public static void main(String[] args) {
-        char[] vertices = {'A','B','C', 'D', 'E', 'F', 'G'};
-        TemplateArista[] aristas = {
-                new TemplateArista('A', 'E'),
-                new TemplateArista('A', 'F'),
-                new TemplateArista('A', 'G'),
-                new TemplateArista('B', 'E'),
-                new TemplateArista('B', 'F'),
-                new TemplateArista('B', 'G'),
-                new TemplateArista('C', 'E'),
-                new TemplateArista('C', 'F'),
-                new TemplateArista('C', 'G'),
-                new TemplateArista('D', 'E'),
-                new TemplateArista('D', 'F'),
-                new TemplateArista('D', 'G'),
-        };
-        new Graph(vertices, aristas);
-    }
 }

@@ -126,4 +126,7 @@ public class ListaAdyacencia implements Grafo{
     public HashMap<Integer, ArrayList<Vertice>> getGrafo() {
         return grafo;
     }
+    public boolean esDirigido() {
+        return dirigido;
+    }
 }

@@ -24,6 +24,11 @@ public class BuilderArista {
         return this;
     }
 
+    public BuilderArista setFlecha(boolean p) {
+        this.arista.setFlecha(p);
+        return this;
+    }
+
     public BuilderArista setColor(Color c) {
         this.arista.setColor(c);
         return this;

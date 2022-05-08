@@ -31,4 +31,8 @@ public class Punto {
     public boolean equals(Punto p) {
         return this.x == p.x && this.y == p.y;
     }
+
+    public Punto clone() {
+        return new Punto(this.x, this.y);
+    }
 }

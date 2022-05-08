@@ -1,6 +1,5 @@
 package logic;
 
-import graphic.Arista;
 import graphic.Graph;
 import graphic.TemplateArista;
 
@@ -37,10 +36,13 @@ public class GraphicAdyacencia {
             ArrayList<Vertice> ady = g.get(key);
             for(int i=0; i<ady.size(); i++){
                 int[] arista = {key, ady.get(i).getValor()};
-                if(!existe(arista, aristas)){
-                    TemplateArista a = new TemplateArista((char)(key+'0'), (char)(ady.get(i).getValor()+'0'));
+                if((!grafo.esDirigido() && !existe(arista, aristas)) || grafo.esDirigido()){
+                    TemplateArista a = new TemplateArista((char) (key + '0'), (char) (ady.get(i).getValor() + '0'));
                     if (ady.get(i).getPeso() != Double.MIN_VALUE) {
                         a.setPeso(ady.get(i).getPeso());
+                    }
+                    if (grafo.esDirigido()) {
+                        a.setFlecha(true);
                     }
                     aristas[p] = a;
                     p++;

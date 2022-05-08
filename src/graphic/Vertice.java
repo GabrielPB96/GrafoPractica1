@@ -72,4 +72,12 @@ public class Vertice{
     public String toString() {
         return "(" + centro.getX() + ", " + centro.getX() + ")";
     }
+
+    public Vertice clone() {
+        Vertice v = new Vertice();
+        v.setLocation(this.getLocation().clone());
+        v.setColor(new Color(this.getColor().getRed(), this.getColor().getGreen(), this.getColor().getBlue()));
+        v.setEtiqueta(this.getEtiqueta());
+        return v;
+    }
 }

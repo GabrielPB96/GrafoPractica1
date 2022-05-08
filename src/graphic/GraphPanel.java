@@ -51,14 +51,17 @@ public class GraphPanel extends JPanel {
 
     public void addAristas(TemplateArista[] aris) {
         for (TemplateArista a1 : aris) {
-            Vertice o = getVertice(a1.getOrigen());
-            Vertice d = getVertice(a1.getDestino());
-            Arista a = new BuilderArista()
-                    .setOrigen(o)
-                    .setDestino(d)
-                    .setPeso(a1.getPeso())
-                    .build();
-            addArista(a);
+            if (a1 != null) {
+                Vertice o = getVertice(a1.getOrigen());
+                Vertice d = getVertice(a1.getDestino());
+                Arista a = new BuilderArista()
+                        .setOrigen(o)
+                        .setDestino(d)
+                        .setPeso(a1.getPeso())
+                        .setFlecha(a1.isFlecha())
+                        .build();
+                addArista(a);
+            }
         }
     }
 
