@@ -85,8 +85,8 @@ public class Arista {
     public void paint(Graphics g) {
         Punto o = oF.getLocation();
         Punto d = dF.getLocation();
-        Punto[] puntos  = MathGeo.interseccionRectaElipse(o, d, 13, 13);
-        Punto[] puntos1 = MathGeo.interseccionRectaElipse(d, o, 13, 13);
+        Punto[] puntos  = MathGeo.interseccionRectaElipse(o, d, dF.getRadioX(), dF.getRadioY());
+        Punto[] puntos1 = MathGeo.interseccionRectaElipse(d, o, oF.getRadioX(), oF.getRadioY());
 
         double di1 = MathGeo.distancia(puntos[0], d);
         double di2 = MathGeo.distancia(puntos1[0], o);

@@ -19,11 +19,11 @@ public class GraphicAdyacencia {
         new Graph(construirVertices(), construirAristas());
     }
 
-    private char[] construirVertices() {
-        char[] vertices = new char[grafo.getNumVertices()];
+    private String[] construirVertices() {
+        String[] vertices = new String[grafo.getNumVertices()];
         int p = 0;
         for (Integer key : g.keySet()) {
-            vertices[p] = (char) (key + '0');
+            vertices[p] = String.valueOf(key);
             p++;
         }
         return vertices;
@@ -37,7 +37,7 @@ public class GraphicAdyacencia {
             for(int i=0; i<ady.size(); i++){
                 int[] arista = {key, ady.get(i).getValor()};
                 if((!grafo.esDirigido() && !existe(arista, aristas)) || grafo.esDirigido()){
-                    TemplateArista a = new TemplateArista((char) (key + '0'), (char) (ady.get(i).getValor() + '0'));
+                    TemplateArista a = new TemplateArista(String.valueOf(key), String.valueOf(ady.get(i).getValor()));
                     if (ady.get(i).getPeso() != Double.MIN_VALUE) {
                         a.setPeso(ady.get(i).getPeso());
                     }
@@ -57,8 +57,8 @@ public class GraphicAdyacencia {
             int o = arista[0], d = arista[1];
             TemplateArista v = aristas[i];
             if (v != null) {
-                if ((v.getOrigen() == (char) (o + '0') && v.getDestino() == (char) (d + '0'))
-                        || (v.getOrigen() == (char) (d + '0') && v.getDestino() == (char) (o + '0'))) {
+                if ((v.getOrigen().equals(String.valueOf(o)) && v.getDestino().equals(String.valueOf(d)))
+                        || (v.getOrigen().equals(String.valueOf(d)) && v.getDestino().equals(String.valueOf(o)))) {
                     return true;
                 }
             }

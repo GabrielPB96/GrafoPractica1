@@ -16,7 +16,7 @@ public class BuilderVertice {
         return this;
     }
 
-    public BuilderVertice setEtiqueta(char etiqueta) {
+    public BuilderVertice setEtiqueta(String etiqueta) {
         this.vertice.setEtiqueta(etiqueta);
         return this;
     }
@@ -45,7 +45,7 @@ public class BuilderVertice {
         return this.vertice.getLocation();
     }
 
-    public char getEtiqueta() {
+    public String getEtiqueta() {
         return this.vertice.getEtiqueta();
     }
 

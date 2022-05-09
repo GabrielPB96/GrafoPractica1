@@ -39,8 +39,8 @@ public class GraphPanel extends JPanel {
         }
     }
 
-    public void addVertices(char[] vert) {
-        for (char ver : vert) {
+    public void addVertices(String[] vert) {
+        for (String ver : vert) {
             Vertice v = new BuilderVertice()
                     .setRandomLocation()
                     .setEtiqueta(ver)
@@ -65,9 +65,9 @@ public class GraphPanel extends JPanel {
         }
     }
 
-    public Vertice getVertice(char etiqueta) {
+    public Vertice getVertice(String etiqueta) {
         for (Vertice v : vertices) {
-            if (v.getEtiqueta() == etiqueta) {
+            if (v.getEtiqueta().equals(etiqueta)) {
                 return v;
             }
         }

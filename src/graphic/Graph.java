@@ -16,7 +16,7 @@ public class Graph extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    public Graph(char[] vertices, TemplateArista[] aristas) {
+    public Graph(String[] vertices, TemplateArista[] aristas) {
         this();
         panel.addVertices(vertices);
         panel.addAristas(aristas);
