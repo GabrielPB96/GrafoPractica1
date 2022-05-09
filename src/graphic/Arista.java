@@ -70,26 +70,37 @@ public class Arista {
         this.destino = destino;
     }
 
-    private void calcularPuntos() {
+    private void calcularPuntos(double dist1, double dist2) {
         Punto o1 = oF.getLocation();
         Punto d1 = dF.getLocation();
         Punto o2 = origen.getLocation();
         Punto d2 = destino.getLocation();
-        Vector v = MathGeo.obtenerVectorReduccion(o1, d1, 13);
-        Vector v2 = MathGeo.obtenerVectorReduccion(d1, o1, 13);
+        Vector v = MathGeo.obtenerVectorReduccion(o1, d1, dist1);
+        Vector v2 = MathGeo.obtenerVectorReduccion(d1, o1, dist2);
         d2.setX(o1.getX() + v.getX());
         d2.setY(o1.getY() + v.getY());
         o2.setX(d1.getX() + v2.getX());
         o2.setY(d1.getY() + v2.getY());
     }
     public void paint(Graphics g) {
-        calcularPuntos();
-        Punto o = origen.getLocation();
-        Punto d = destino.getLocation();
+        Punto o = oF.getLocation();
+        Punto d = dF.getLocation();
+        Punto[] puntos  = MathGeo.interseccionRectaElipse(o, d, 13, 13);
+        Punto[] puntos1 = MathGeo.interseccionRectaElipse(d, o, 13, 13);
+
+        double di1 = MathGeo.distancia(puntos[0], d);
+        double di2 = MathGeo.distancia(puntos1[0], o);
+
+        calcularPuntos(di1, di2);
+
+
+        Punto o1 = origen.getLocation();
+        Punto d1 = destino.getLocation();
+
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(color);
         g2.setStroke(new BasicStroke(3));
-        Linea recta = (flecha) ? new Flecha(o, d) : new Recta(o, d);
+        Linea recta = (flecha) ? new Flecha(o1, d1) : new Recta(o1, d1);
         recta.paint(g2);
 
         if (peso != Double.MIN_VALUE) {

@@ -35,4 +35,13 @@ public class Punto {
     public Punto clone() {
         return new Punto(this.x, this.y);
     }
+
+    public void setLocation(Punto p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    public String toString() {
+        return "(" + this.x + ", " + this.y + ")";
+    }
 }

@@ -29,4 +29,8 @@ public class Vector {
         this.x *= escalar;
         this.y *= escalar;
     }
+
+    public String toString() {
+        return "<" + x + ", " + y + ">";
+    }
 }
