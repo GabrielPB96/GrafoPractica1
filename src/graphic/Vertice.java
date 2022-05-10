@@ -27,7 +27,7 @@ public class Vertice{
         this.etiqueta = v.getEtiqueta();
         this.color = v.getColor();
         this.radioY = v.getRadioY();
-        this.radioX = etiqueta.length() * 10;
+        this.radioX = etiqueta.length() * 9;
     }
 
     public void paint(Graphics g) {
@@ -54,6 +54,14 @@ public class Vertice{
 
     public Punto getLocation() {
         return this.centro;
+    }
+
+    public double getX() {
+        return this.centro.getX();
+    }
+
+    public double getY() {
+        return this.centro.getY();
     }
 
     public Color getColor() {

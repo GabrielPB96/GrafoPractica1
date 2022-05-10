@@ -12,6 +12,8 @@ public class GraphPanel extends JPanel {
     private ArrayList<Vertice> vertices;
     private ArrayList<Arista> aristas;
     private Vertice clickedVertice;
+    private Punto clickedCursor;
+    private ArrayList<Punto> centros;
     private final Manejador manejador = new Manejador();
 
     public static int a, b;
@@ -23,8 +25,10 @@ public class GraphPanel extends JPanel {
         addMouseMotionListener(manejador);
         addMouseListener(manejador);
         clickedVertice = null;
+        clickedCursor = null;
         vertices = new ArrayList<>();
         aristas = new ArrayList<>();
+        centros = new ArrayList<>();
     }
 
     public void addVertices(Vertice[] v) {
@@ -102,10 +106,29 @@ public class GraphPanel extends JPanel {
     }
 
     private class Manejador extends MouseAdapter {
+        int desplazamientoX, desplazamientoY;
+        public Manejador() {
+            desplazamientoX = 0;
+            desplazamientoY = 0;
+        }
+
+        private void moveGraph(int desX, int desY) {
+            for(int i = 0; i < vertices.size(); i++) {
+                double x = centros.get(i).getX() + desX;
+                double y = centros.get(i).getY() + desY;
+                vertices.get(i).setLocation(new Punto(x, y));
+            }
+        }
+
         @Override
         public void mouseDragged(MouseEvent e) {
             if (clickedVertice != null) {
                 clickedVertice.setLocation(new Punto(e.getX(), e.getY()));
+                repaint();
+            }else{
+                desplazamientoX = (int)(e.getX() - clickedCursor.getX());
+                desplazamientoY = (int)(e.getY() - clickedCursor.getY());
+                moveGraph(desplazamientoX, desplazamientoY);
                 repaint();
             }
         }
@@ -113,6 +136,59 @@ public class GraphPanel extends JPanel {
         @Override
         public void mouseClicked(MouseEvent e) {
             searchClickedVertice(e.getX(), e.getY());
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            guardarCentrosVertices();
+            if (clickedVertice == null) {
+                opacarAristas();
+                opacarVertices();
+                repaint();
+            }
+            clickedCursor = new Punto(e.getX(), e.getY());
+            setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            reestablecerColorAristas();
+            reestablecerColorVertices();
+            repaint();
+        }
+
+        private void reestablecerColorAristas() {
+            for (Arista a : aristas) {
+                Color c = a.getColor();
+                a.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue()));
+            }
+        }
+
+        private void reestablecerColorVertices() {
+            for (Vertice v : vertices) {
+                Color c = v.getColor();
+                v.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue()));
+            }
+        }
+
+        private void guardarCentrosVertices() {
+            centros = new ArrayList<>();
+            for(Vertice v : vertices){
+                centros.add(new Punto(v.getX(), v.getY()));
+            }
+        }
+        private void opacarAristas() {
+            for(Arista a : aristas){
+                Color c = a.getColor();
+                a.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
+            }
+        }
+        private void opacarVertices() {
+            for(Vertice v : vertices){
+                Color c = v.getColor();
+                v.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
+            }
         }
 
         @Override
