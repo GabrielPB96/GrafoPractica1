@@ -1,10 +1,10 @@
 package logic;
 
-public class Vertice {
+public class Vecino {
     private int valor;
     private double peso;
 
-    public Vertice(int valor, double peso) {
+    public Vecino(int valor, double peso) {
         this.valor = valor;
         this.peso  = peso;
     }

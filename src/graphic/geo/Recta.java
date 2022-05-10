@@ -1,6 +1,6 @@
 package graphic.geo;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 public class Recta implements Linea{
     private Punto origen;

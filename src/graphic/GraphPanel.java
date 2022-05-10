@@ -2,8 +2,10 @@ package graphic;
 
 import graphic.geo.Punto;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -50,6 +52,16 @@ public class GraphPanel extends JPanel {
                     .setEtiqueta(ver)
                     .build();
             addVertice(v);
+        }
+    }
+
+    public void addVertices(TemplateVertice[] v) {
+        for (TemplateVertice t : v) {
+            Vertice v1 = new BuilderVertice()
+                         .setRandomLocation()
+                         .setEtiqueta(t.getEtiqueta())
+                         .setColor(t.getColor()).build();
+            addVertice(v1);
         }
     }
 

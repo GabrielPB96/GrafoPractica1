@@ -2,7 +2,10 @@ package graphic;
 
 import graphic.geo.Punto;
 
-import java.awt.*;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
 
 public class Vertice{
     private Punto centro;
@@ -10,23 +13,17 @@ public class Vertice{
     private Color color;
     private String etiqueta;
 
-    public Vertice() {
-        this.centro = null;
-        this.etiqueta = " ";
-        this.color = new Color(50, 133, 206);
-        this.radioX = 13;
-        this.radioY = 13;
+    private Vertice() {
     }
 
     public Vertice(BuilderVertice builder) {
-        Vertice v = builder.getVertice();
-        if (builder.getPunto() == null) {
+        if (builder.getCentro() == null) {
             throw new IllegalArgumentException("El centro no puede ser nulo");
         }
-        this.centro = v.getLocation();
-        this.etiqueta = v.getEtiqueta();
-        this.color = v.getColor();
-        this.radioY = v.getRadioY();
+        this.centro = builder.getCentro();
+        this.etiqueta = builder.getEtiqueta();
+        this.color = builder.getColor();
+        this.radioY = 13;
         this.radioX = etiqueta.length() * 9;
     }
 

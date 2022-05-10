@@ -1,10 +1,4 @@
 package graphic.geo;
-import graphic.BuilderVertice;
-import graphic.*;
-
-import javax.swing.*;
-
-import java.awt.*;
 
 import static java.lang.Math.*;
 public class MathGeo {
@@ -70,24 +64,5 @@ public class MathGeo {
         intersecciones[1] = new Punto(x2, y2);
 
         return intersecciones;
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("MathGeo");
-        frame.setSize(400, 400);
-        JPanel panel = new JPanel() {
-            @Override
-            public void paintComponent(java.awt.Graphics g) {
-                super.paintComponent(g);
-                g.setColor(Color.BLUE);
-                g.fillOval(95, 84,26,26);
-                g.setColor(Color.RED);
-                g.setFont(new Font("Arial", Font.BOLD, 15));
-                g.drawString("1", 100, 100);
-            }
-        };
-        frame.add(panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 }

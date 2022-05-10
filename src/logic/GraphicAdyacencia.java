@@ -2,13 +2,14 @@ package logic;
 
 import graphic.Graph;
 import graphic.TemplateArista;
+import graphic.TemplateVertice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GraphicAdyacencia {
     private ListaAdyacencia grafo;
-    private HashMap<Integer, ArrayList<Vertice>> g;
+    private HashMap<Integer, ArrayList<Vecino>> g;
 
     public GraphicAdyacencia(ListaAdyacencia grafo) {
         this.grafo = grafo;
@@ -17,6 +18,17 @@ public class GraphicAdyacencia {
 
     public void paint(){
         new Graph(construirVertices(), construirAristas());
+    }
+
+    public TemplateVertice[] construirTemplateVertices(){
+        TemplateVertice[] vertices = new TemplateVertice[grafo.getNumVertices()];
+        int p = 0;
+        for (Integer key : g.keySet()) {
+            TemplateVertice v = new TemplateVertice(String.valueOf(key));
+            vertices[p] = v;
+            p++;
+        }
+        return vertices;
     }
 
     private String[] construirVertices() {
@@ -33,7 +45,7 @@ public class GraphicAdyacencia {
         TemplateArista[] aristas = new TemplateArista[grafo.getNumAristas()];
         int p = 0;
         for(Integer key : g.keySet()){
-            ArrayList<Vertice> ady = g.get(key);
+            ArrayList<Vecino> ady = g.get(key);
             for(int i=0; i<ady.size(); i++){
                 int[] arista = {key, ady.get(i).getValor()};
                 if((!grafo.esDirigido() && !existe(arista, aristas)) || grafo.esDirigido()){

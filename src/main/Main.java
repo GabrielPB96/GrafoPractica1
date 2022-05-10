@@ -18,6 +18,9 @@ public class Main {
         grafo.insertarArista(1, 2);
         grafo.insertarArista(2, 3);
         grafo.insertarArista(0, 0);
+        grafo.insertarArista(1, 1);
+        grafo.insertarArista(2, 2);
+        grafo.insertarArista(3, 3);
         /*grafo.insertarArista(0, 1, 3);
         grafo.insertarArista(2, 0, 6);
         grafo.insertarArista(2, 1, 9);

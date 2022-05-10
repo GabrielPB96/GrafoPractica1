@@ -1,6 +1,6 @@
 package graphic;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class BuilderArista {
     private Arista arista;

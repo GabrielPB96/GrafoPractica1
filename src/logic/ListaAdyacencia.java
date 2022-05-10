@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListaAdyacencia implements Grafo{
-    private HashMap<Integer, ArrayList<Vertice>> grafo;
+    private HashMap<Integer, ArrayList<Vecino>> grafo;
     private boolean dirigido;
     private int cantVertices, cantAristas;
 
@@ -24,21 +24,21 @@ public class ListaAdyacencia implements Grafo{
     }
 
     public void insertarArista(int i, int j) {
-        ArrayList<Vertice> ady = grafo.get(i);
-        ady.add(new Vertice(j, Double.MIN_VALUE));
+        ArrayList<Vecino> ady = grafo.get(i);
+        ady.add(new Vecino(j, Double.MIN_VALUE));
         if (!dirigido) {
-            ArrayList<Vertice> ady2 = grafo.get(j);
-            ady2.add(new Vertice(i, Double.MIN_VALUE));
+            ArrayList<Vecino> ady2 = grafo.get(j);
+            ady2.add(new Vecino(i, Double.MIN_VALUE));
         }
         cantAristas++;
     }
 
     public void insertarArista(int i, int j, double peso) {
-        ArrayList<Vertice> ady = grafo.get(i);
-        ady.add(new Vertice(j, peso));
+        ArrayList<Vecino> ady = grafo.get(i);
+        ady.add(new Vecino(j, peso));
         if (!dirigido) {
-            ArrayList<Vertice> ady2 = grafo.get(j);
-            ady2.add(new Vertice(i, peso));
+            ArrayList<Vecino> ady2 = grafo.get(j);
+            ady2.add(new Vecino(i, peso));
         }
         cantAristas++;
     }
@@ -52,7 +52,7 @@ public class ListaAdyacencia implements Grafo{
     }
 
     public boolean existeArista(int origen, int destino) {
-        ArrayList<Vertice> adyO = grafo.get(origen);
+        ArrayList<Vecino> adyO = grafo.get(origen);
         boolean existe = false;
         if (adyO != null) {
             for (int i=0; i<adyO.size() && !existe; i++) {
@@ -63,9 +63,9 @@ public class ListaAdyacencia implements Grafo{
     }
 
     public double getPesoArista(int i, int j){
-        ArrayList<Vertice> ady = grafo.get(i);
+        ArrayList<Vecino> ady = grafo.get(i);
         double peso = Double.MIN_VALUE;
-        Vertice v = null;
+        Vecino v = null;
         if (ady != null) {
             for (int k = 0; k < ady.size() && v == null; k++) {
                 if (ady.get(k).getValor() == j) v = ady.get(k);
@@ -75,8 +75,8 @@ public class ListaAdyacencia implements Grafo{
         return peso;
     }
 
-    public ArrayList<Vertice> getAdyacentes(int vertice) {
-        ArrayList<Vertice> ady = grafo.get(vertice);
+    public ArrayList<Vecino> getAdyacentes(int vertice) {
+        ArrayList<Vecino> ady = grafo.get(vertice);
         return (ady != null) ? ady : new ArrayList<>();
     }
 
@@ -93,7 +93,7 @@ public class ListaAdyacencia implements Grafo{
         return sePudo;
     }
     private boolean eliminarArista(int o, int d){
-        ArrayList<Vertice> ady = grafo.get(o);
+        ArrayList<Vecino> ady = grafo.get(o);
         if (ady != null) {
             for (int i = 0; i < ady.size(); i++) {
                 if (ady.get(i).getValor() == d) {
@@ -123,7 +123,7 @@ public class ListaAdyacencia implements Grafo{
         return false;
     }
 
-    public HashMap<Integer, ArrayList<Vertice>> getGrafo() {
+    public HashMap<Integer, ArrayList<Vecino>> getGrafo() {
         return grafo;
     }
     public boolean esDirigido() {
