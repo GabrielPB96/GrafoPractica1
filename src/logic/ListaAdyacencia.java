@@ -14,6 +14,7 @@ public class ListaAdyacencia implements Grafo{
     public ListaAdyacencia(boolean dirigido) {
         cantVertices = 0;
         cantAristas = 0;
+        cantLazos = 0;
         this.dirigido = dirigido;
         grafo = new HashMap<>();
         graficador = new GraphicAdyacencia(this);
@@ -26,6 +27,7 @@ public class ListaAdyacencia implements Grafo{
         cantVertices++;
     }
 
+    @Override
     public void insertarArista(int i, int j) {
         ArrayList<Vecino> ady = grafo.get(i);
         ady.add(new Vecino(j, Double.MIN_VALUE));
@@ -33,9 +35,11 @@ public class ListaAdyacencia implements Grafo{
             ArrayList<Vecino> ady2 = grafo.get(j);
             ady2.add(new Vecino(i, Double.MIN_VALUE));
         }
+        if (i == j) cantLazos++;
         cantAristas++;
     }
 
+    @Override
     public void insertarArista(int i, int j, double peso) {
         ArrayList<Vecino> ady = grafo.get(i);
         ady.add(new Vecino(j, peso));
@@ -43,17 +47,21 @@ public class ListaAdyacencia implements Grafo{
             ArrayList<Vecino> ady2 = grafo.get(j);
             ady2.add(new Vecino(i, peso));
         }
+        if (i == j) cantLazos++;
         cantAristas++;
     }
 
+    @Override
     public int getNumVertices() {
         return cantVertices;
     }
 
+    @Override
     public int getNumAristas() {
         return cantAristas;
     }
 
+    @Override
     public boolean existeArista(int origen, int destino) {
         ArrayList<Vecino> adyO = grafo.get(origen);
         boolean existe = false;
@@ -65,6 +73,7 @@ public class ListaAdyacencia implements Grafo{
         return existe;
     }
 
+    @Override
     public double getPesoArista(int i, int j){
         ArrayList<Vecino> ady = grafo.get(i);
         double peso = Double.MIN_VALUE;
@@ -78,15 +87,24 @@ public class ListaAdyacencia implements Grafo{
         return peso;
     }
 
+    @Override
     public ArrayList<Vecino> getAdyacentes(int vertice) {
         ArrayList<Vecino> ady = grafo.get(vertice);
         return (ady != null) ? ady : new ArrayList<>();
     }
 
+    @Override
     public void dibujarGrafo(){
         graficador.paint();
+        System.out.println("\nDibujo grafo");
+        System.out.println("Cantidad de vertices: " + cantVertices);
+        System.out.println("Cantidad de aristas: " + cantAristas);
+        System.out.println("Cantidad de lazos: " + cantLazos);
+        System.out.println("Es dirigido: " + dirigido);
+        System.out.println(toString());
     }
 
+    @Override
     public boolean quitarArista(int origen, int destino) {
         boolean sePudo;
         sePudo = eliminarArista(origen, destino);
@@ -101,6 +119,7 @@ public class ListaAdyacencia implements Grafo{
             for (int i = 0; i < ady.size(); i++) {
                 if (ady.get(i).getValor() == d) {
                     ady.remove(i);
+                    if (o == d) cantLazos--;
                     cantAristas--;
                     return true;
                 }
@@ -109,16 +128,22 @@ public class ListaAdyacencia implements Grafo{
         return false;
     }
 
+    @Override
     public boolean esCompleto() {
         return verificador.esCompleto();
     }
 
+    @Override
     public boolean esGrafoCiclo() {
         return verificador.esGrafoCiclo();
     }
+
+    @Override
     public boolean esGrafoRueda() {
         return verificador.esGrafoRueda();
     }
+
+    @Override
     public boolean existeBucle() {
         return false;
     }
@@ -128,5 +153,19 @@ public class ListaAdyacencia implements Grafo{
     }
     public boolean esDirigido() {
         return dirigido;
+    }
+
+    public String toString(){
+        String reporte = "Vertice | Adyacentes\n";
+        for(Integer v : grafo.keySet()){
+            reporte += ""+v + "   ->   {";
+            ArrayList<Vecino> ady = grafo.get(v);
+            for(Vecino vec : ady){
+                double peso = vec.getPeso()==Double.MIN_VALUE ? 0 : vec.getPeso();
+                reporte += "(" + vec.getValor() + ", " +peso+ ") ";
+            }
+            reporte += "}\n";
+        }
+        return reporte;
     }
 }
