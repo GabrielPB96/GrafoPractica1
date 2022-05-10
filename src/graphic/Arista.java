@@ -93,15 +93,18 @@ public class Arista {
 
         calcularPuntos(di1, di2);
 
-
         Punto o1 = origen.getLocation();
         Punto d1 = destino.getLocation();
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(color);
         g2.setStroke(new BasicStroke(3));
-        Linea recta = (flecha) ? new Flecha(o1, d1) : new Recta(o1, d1);
-        recta.paint(g2);
+        if(!oF.equals(dF)) {
+            Linea recta = (flecha) ? new Flecha(o1, d1) : new Recta(o1, d1);
+            recta.paint(g2);
+        }else{
+            paintLazo(g2, o, d);
+        }
 
         if (peso != Double.MIN_VALUE) {
             g2.setColor(Color.WHITE);
@@ -110,5 +113,12 @@ public class Arista {
             g2.setColor(Color.BLUE);
             g2.drawString(String.valueOf(peso), ((int) (o.getX() + d.getX()) / 2)-9, ((int) (o.getY() + d.getY()) / 2)+9);
         }
+    }
+
+    private void paintLazo(Graphics2D g2, Punto o1, Punto d1) {
+        int x = (int)(o1.getX());
+        int y = (int)(o1.getY()- (dF.getRadioY()+5));
+
+        g2.drawOval(x, y, 23, 23);
     }
 }
