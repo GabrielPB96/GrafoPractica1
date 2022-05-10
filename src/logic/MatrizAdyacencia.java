@@ -12,11 +12,12 @@ public class MatrizAdyacencia implements Grafo {
         this.matriz = matriz;
         this.dirigido = dirigido;
         this.pesos = new double[matriz.length][matriz.length];
+        verificador = dirigido ? new Dirigido(this) : new NoDirigido(this);
     }
 
     @Override
     public int getNumVertices() {
-        return this.matriz.length;
+        return matriz.length;
     }
 
     @Override
@@ -53,6 +54,7 @@ public class MatrizAdyacencia implements Grafo {
     public void insertarArista(int i, int j) {
         if(valido(i,j)) {
             this.matriz[i][j] = 1;
+            if (!dirigido) this.matriz[j][i] = 1;
         }
     }
 
@@ -61,6 +63,7 @@ public class MatrizAdyacencia implements Grafo {
         if(valido(i,j)) {
             this.matriz[i][j] = 1;
             this.pesos[i][j] = peso;
+            if (!dirigido) this.matriz[j][i] = 1;
         }
     }
 
@@ -83,26 +86,38 @@ public class MatrizAdyacencia implements Grafo {
     public boolean quitarArista(int origen, int destino) {
         if (!valido(origen, destino)) return false;
         this.matriz[origen][destino] = 0;
+        if (!dirigido) this.matriz[destino][origen] = 0;
         return true;
     }
 
     @Override
     public boolean esCompleto() {
-        return false;
+        return verificador.esCompleto();
     }
 
     @Override
     public boolean esGrafoCiclo() {
-        return false;
+        return verificador.esGrafoCiclo();
     }
 
     @Override
     public boolean esGrafoRueda() {
-        return false;
+        return verificador.esGrafoRueda();
     }
 
     @Override
     public boolean existeBucle() {
         return false;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.matriz.length; i++) {
+            for (int j = 0; j < this.matriz.length; j++) {
+                sb.append(this.matriz[i][j] + " ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

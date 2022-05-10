@@ -18,8 +18,7 @@ public class ListaAdyacencia implements Grafo{
         this.dirigido = dirigido;
         grafo = new HashMap<>();
         graficador = new GraphicAdyacencia(this);
-        if (dirigido) verificador = new Dirigido(this);
-        else verificador = new NoDirigido(this);
+        verificador = dirigido ? new Dirigido(this) : new NoDirigido(this);
     }
 
     public void insertarVertice(int v) {
