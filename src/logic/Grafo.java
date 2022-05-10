@@ -11,6 +11,7 @@ public interface Grafo {
     //public abstract ArrayList<Adyacente> getAdyacentes(int vertice);/// valor de retorno puede ser diferente
     public abstract void dibujarGrafo();
     public abstract boolean quitarArista(int origen, int destino);
+
     public abstract boolean esCompleto();
     public abstract boolean esGrafoCiclo();
     public abstract boolean esGrafoRueda();

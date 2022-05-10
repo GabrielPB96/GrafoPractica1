@@ -6,7 +6,8 @@ import java.util.HashMap;
 public class ListaAdyacencia implements Grafo{
     private HashMap<Integer, ArrayList<Vecino>> grafo;
     private boolean dirigido;
-    private int cantVertices, cantAristas;
+    private int cantVertices, cantAristas, cantLazos;
+    private Verificador verificador;
 
     private GraphicAdyacencia graficador;
 
@@ -16,6 +17,8 @@ public class ListaAdyacencia implements Grafo{
         this.dirigido = dirigido;
         grafo = new HashMap<>();
         graficador = new GraphicAdyacencia(this);
+        if (dirigido) verificador = new Dirigido(this);
+        else verificador = new NoDirigido(this);
     }
 
     public void insertarVertice(int v) {
@@ -107,17 +110,14 @@ public class ListaAdyacencia implements Grafo{
     }
 
     public boolean esCompleto() {
-        int n = (cantVertices*(cantVertices-1))/2;
-        return n == cantAristas;
+        return verificador.esCompleto();
     }
 
     public boolean esGrafoCiclo() {
-        if (cantVertices <= 2 ) return false;
-
-        return false;
+        return verificador.esGrafoCiclo();
     }
     public boolean esGrafoRueda() {
-        return false;
+        return verificador.esGrafoRueda();
     }
     public boolean existeBucle() {
         return false;
