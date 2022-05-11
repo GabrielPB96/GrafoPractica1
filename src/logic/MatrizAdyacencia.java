@@ -6,11 +6,13 @@ public class MatrizAdyacencia implements Grafo {
     private int[][] matriz;
     private double[][] pesos;
     private boolean dirigido;
+    private int lazos;
     private Verificador verificador;
 
     public MatrizAdyacencia(int[][] matriz, boolean dirigido) {
         this.matriz = matriz;
         this.dirigido = dirigido;
+        lazos = 0;
         this.pesos = new double[matriz.length][matriz.length];
         verificador = dirigido ? new Dirigido(this) : new NoDirigido(this);
     }
@@ -22,13 +24,14 @@ public class MatrizAdyacencia implements Grafo {
 
     @Override
     public int getNumAristas() {
-        return dirigido ? contarAristas() : contarAristas() / 2;
+        int res = dirigido ? contarAristas() : contarAristas() / 2;
+        return res + lazos;
     }
     private int contarAristas() {
         int numAristas = 0;
         for (int i = 0; i < this.matriz.length; i++) {
             for (int j = 0; j < this.matriz.length; j++) {
-                if (this.matriz[i][j] != 0) numAristas++;
+                if (this.matriz[i][j] != 0 && i!=j) numAristas++;
             }
         }
         return numAristas;
@@ -55,6 +58,7 @@ public class MatrizAdyacencia implements Grafo {
         if(valido(i,j)) {
             this.matriz[i][j] = 1;
             if (!dirigido) this.matriz[j][i] = 1;
+            if (i == j) lazos++;
         }
     }
 
@@ -64,6 +68,7 @@ public class MatrizAdyacencia implements Grafo {
             this.matriz[i][j] = 1;
             this.pesos[i][j] = peso;
             if (!dirigido) this.matriz[j][i] = 1;
+            if (i == j) lazos++;
         }
     }
 
@@ -87,6 +92,7 @@ public class MatrizAdyacencia implements Grafo {
         if (!valido(origen, destino)) return false;
         this.matriz[origen][destino] = 0;
         if (!dirigido) this.matriz[destino][origen] = 0;
+        if (origen == destino) lazos--;
         return true;
     }
 
@@ -107,7 +113,7 @@ public class MatrizAdyacencia implements Grafo {
 
     @Override
     public boolean existeBucle() {
-        return false;
+        return verificador.existeBucle();
     }
 
     public String toString() {
@@ -119,5 +125,9 @@ public class MatrizAdyacencia implements Grafo {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public int[][] getMatriz() {
+        return matriz;
     }
 }

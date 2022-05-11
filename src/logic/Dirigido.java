@@ -25,9 +25,4 @@ public class Dirigido extends Verificador {
         int nAristas    = grafo.getNumAristas();
         return 4*(nVertices-1) == nAristas;
     }
-
-    @Override
-    public boolean existeBucle() {
-        return false;
-    }
 }

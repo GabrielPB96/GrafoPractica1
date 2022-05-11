@@ -46,9 +46,13 @@ public class Main {
         matriz.insertarArista(4,2);
         matriz.insertarArista(4,3);
         matriz.insertarArista(4,0);
+        matriz.insertarArista(3,3);
         System.out.println(matriz.toString());
+        System.out.println("Vertice 0: "+matriz.getNumVertices());
+        System.out.println("Aristas: "+matriz.getNumAristas());
         System.out.println("Completo: "+matriz.esCompleto());
         System.out.println("Grafo Ciclo: "+matriz.esGrafoCiclo());
         System.out.println("Grado Rueda: "+matriz.esGrafoRueda());
+        System.out.println("Bucle: "+matriz.existeBucle());
     }
 }

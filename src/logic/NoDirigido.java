@@ -28,9 +28,4 @@ public class NoDirigido extends Verificador {
         if (nVertices <= 2 ) return false;
         return 2*(nVertices-1) == nAristas;
     }
-
-    @Override
-    public boolean existeBucle() {
-        return false;
-    }
 }

@@ -144,7 +144,7 @@ public class ListaAdyacencia implements Grafo{
 
     @Override
     public boolean existeBucle() {
-        return false;
+        return verificador.existeBucle();
     }
 
     public HashMap<Integer, ArrayList<Vecino>> getGrafo() {
