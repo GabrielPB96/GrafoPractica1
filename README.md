@@ -1,5 +1,5 @@
 # Práctica Grafos
-## > Pantoja Bustamante Gabriel
+> Pantoja Bustamante Gabriel
 ## Implementación Base
 
 ## Lista de Adyacencia
