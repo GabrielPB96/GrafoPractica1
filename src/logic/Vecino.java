@@ -16,4 +16,13 @@ public class Vecino {
     public double getPeso() {
         return peso;
     }
+
+    @Override
+    public boolean equals(Object v) {
+        if (v instanceof Vecino) {
+            Vecino vecino = (Vecino) v;
+            return this.valor == vecino.getValor() && this.peso == vecino.getPeso();
+        }
+        return false;
+    }
 }

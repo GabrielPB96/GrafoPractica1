@@ -18,7 +18,7 @@ public class ListaAdyacencia implements Grafo{
         this.dirigido = dirigido;
         grafo = new HashMap<>();
         graficador = new GraphicAdyacencia(this);
-        verificador = dirigido ? new Dirigido(this) : new NoDirigido(this);
+        verificador = dirigido ? new VerificadorDirigido(this) : new VerificadorNoDirigido(this);
     }
 
     public void insertarVertice(int v) {
@@ -73,15 +73,17 @@ public class ListaAdyacencia implements Grafo{
     }
 
     @Override
-    public double getPesoArista(int i, int j){
+    public double getPesoArista(int i, int j) throws Exception {
         ArrayList<Vecino> ady = grafo.get(i);
         double peso = Double.MIN_VALUE;
         Vecino v = null;
+        if (ady == null) throw new Exception("La arista no existe");
         if (ady != null) {
             for (int k = 0; k < ady.size() && v == null; k++) {
                 if (ady.get(k).getValor() == j) v = ady.get(k);
             }
             if (v != null) peso = v.getPeso();
+            else throw new Exception("La arista no existe");
         }
         return peso;
     }

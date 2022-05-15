@@ -14,7 +14,7 @@ public class MatrizAdyacencia implements Grafo {
         this.dirigido = dirigido;
         lazos = 0;
         this.pesos = new double[matriz.length][matriz.length];
-        verificador = dirigido ? new Dirigido(this) : new NoDirigido(this);
+        verificador = dirigido ? new VerificadorDirigido(this) : new VerificadorNoDirigido(this);
     }
 
     @Override

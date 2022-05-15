@@ -18,12 +18,10 @@ public class GraphPanel extends JPanel {
     private ArrayList<Punto> centros;
     private final Manejador manejador = new Manejador();
 
-    public static int a, b;
+    public static int a = 120, b = 370;
 
-    public GraphPanel(int a, int b) {
+    public GraphPanel() {
         setBackground(Color.WHITE);
-        this.a = a;
-        this.b = b;
         addMouseMotionListener(manejador);
         addMouseListener(manejador);
         clickedVertice = null;
@@ -35,6 +33,7 @@ public class GraphPanel extends JPanel {
 
     public void addVertices(Vertice[] v) {
         for (Vertice vertice : v) {
+            //System.out.println(vertice.getLocation());
             vertices.add(vertice);
         }
     }
@@ -48,7 +47,7 @@ public class GraphPanel extends JPanel {
     public void addVertices(String[] vert) {
         for (String ver : vert) {
             Vertice v = new BuilderVertice()
-                    .setRandomLocation()
+                    //.setRandomLocation()
                     .setEtiqueta(ver)
                     .build();
             addVertice(v);
@@ -58,7 +57,7 @@ public class GraphPanel extends JPanel {
     public void addVertices(TemplateVertice[] v) {
         for (TemplateVertice t : v) {
             Vertice v1 = new BuilderVertice()
-                         .setRandomLocation()
+                         //.setRandomLocation()
                          .setEtiqueta(t.getEtiqueta())
                          .setColor(t.getColor()).build();
             addVertice(v1);

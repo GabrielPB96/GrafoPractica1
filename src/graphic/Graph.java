@@ -6,7 +6,7 @@ public class Graph extends JFrame {
     private GraphPanel panel;
 
     public Graph(){
-        panel = new GraphPanel(120, 370);
+        panel = new GraphPanel();
         setTitle("Graph");
         setBounds(0, 0, 500, 500);
         setLocationRelativeTo(null);

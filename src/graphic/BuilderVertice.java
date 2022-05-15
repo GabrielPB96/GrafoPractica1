@@ -10,7 +10,7 @@ public class BuilderVertice {
     private String etiqueta;
 
     public BuilderVertice() {
-        this.centro = new Punto(0, 0);
+        this.centro = setRandomLocation();
         this.etiqueta = " ";
         this.color = new Color(50, 133, 206);
     }
@@ -30,11 +30,10 @@ public class BuilderVertice {
         return this;
     }
 
-    public BuilderVertice setRandomLocation() {
+    public Punto setRandomLocation() {
         int x = ((int) (Math.random() *  (GraphPanel.b-GraphPanel.a))) + GraphPanel.a;
         int y = ((int) (Math.random() *  (GraphPanel.b-GraphPanel.a))) + GraphPanel.a;
-        centro.setLocation(new Punto(x, y));
-        return this;
+        return new Punto(x, y);
     }
 
     public Vertice build() {

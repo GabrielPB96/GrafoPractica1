@@ -1,7 +1,7 @@
 package logic;
 
-public class NoDirigido extends Verificador {
-    public NoDirigido(Grafo grafo) {
+public class VerificadorNoDirigido extends Verificador {
+    public VerificadorNoDirigido(Grafo grafo) {
         super(grafo);
     }
 

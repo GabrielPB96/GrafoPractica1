@@ -1,58 +1,28 @@
 package main;
-import logic.*;
+import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import logic.ListaAdyacencia;
 
 public class Main {
-    public static void main(String[] args) {
-        /*ListaAdyacencia grafo = new ListaAdyacencia(false);
+    @Test
+    public void test1() {
+        ListaAdyacencia grafo = new ListaAdyacencia(true);
+        int[] nodos = {0, 1, 2, 3};
 
-        int[] vertices = {0, 1, 2, 3, 4};
-
-        for (Integer v  : vertices)  {
-            grafo.insertarVertice(v);
+        for (int nodo : nodos) {
+            grafo.insertarVertice(nodo);
         }
 
-        grafo.insertarArista(0, 1);
-        grafo.insertarArista(0, 3);
-        grafo.insertarArista(1, 2);
-        grafo.insertarArista(3, 2);
-        grafo.insertarArista(3, 4);
-        grafo.insertarArista(4, 2);
-        grafo.insertarArista(4, 1);
-        grafo.insertarArista(4, 0);
-        grafo.insertarArista(2, 2);*/
-
-        /*grafo.insertarArista(0, 1, 3);
-        grafo.insertarArista(2, 0, 6);
-        grafo.insertarArista(2, 1, 9);
+        grafo.insertarArista(0, 1, 3);
         grafo.insertarArista(3, 0, 3);
         grafo.insertarArista(3, 1, 2);
-        grafo.insertarArista(3, 2, 10);*/
+        grafo.insertarArista(3, 2, 10);
+        grafo.insertarArista(2, 1, 9);
+        grafo.insertarArista(2, 0, 6);
 
-        /*System.out.println("Completo: "+grafo.esCompleto());
-        System.out.println("Grafo Ciclo: "+grafo.esGrafoCiclo());
-        System.out.println("Grado Rueda: "+grafo.esGrafoRueda());
-
-        grafo.dibujarGrafo();*/
-
-        int[][] m = new int[][] {
-                {0, 1, 0, 1, 0},
-                {1, 0, 1, 0, 0},
-                {0, 1, 0, 1, 0},
-                {1, 0, 1, 0, 0},
-                {0, 0, 0, 0, 0}
-        };
-        MatrizAdyacencia matriz = new MatrizAdyacencia(m,false);
-        matriz.insertarArista(4,1);
-        matriz.insertarArista(4,2);
-        matriz.insertarArista(4,3);
-        matriz.insertarArista(4,0);
-        matriz.insertarArista(3,3);
-        System.out.println(matriz.toString());
-        System.out.println("Vertice 0: "+matriz.getNumVertices());
-        System.out.println("Aristas: "+matriz.getNumAristas());
-        System.out.println("Completo: "+matriz.esCompleto());
-        System.out.println("Grafo Ciclo: "+matriz.esGrafoCiclo());
-        System.out.println("Grado Rueda: "+matriz.esGrafoRueda());
-        System.out.println("Bucle: "+matriz.existeBucle());
+        assertEquals(grafo.getNumVertices(),4);
     }
 }
