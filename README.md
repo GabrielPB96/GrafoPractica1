@@ -41,4 +41,3 @@ Devolvemos la variable que cuenta las Aristas.
 ### Es Grafo Rueda. [métodos](#métodos)
 ### Existe Bucle. [métodos](#métodos)
 
-
