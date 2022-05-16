@@ -143,7 +143,7 @@ public abstract class Verificador {
 ### Es Grafo Completo.
 Para que un grafo sea completo debe existir una arista para cada par de vertices.
 
-Para un grafo no dirigido esto se puede verificar usando combinaciones, ya que la arista A-B es igual a B-A, las combinaciones nos ayudan a no tomar ecuenta las aristas repetidas.
+Para un grafo no dirigido esto se puede verificar usando combinaciones, ya que la arista A-B es igual a B-A, las combinaciones nos ayudan a no tomar en cuenta las aristas repetidas.
 
 La cantidad de aristas debe ser igual a *_nC2_* donde n es la cantidad de vertices.
 
