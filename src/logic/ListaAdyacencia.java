@@ -95,11 +95,6 @@ public class ListaAdyacencia implements Grafo{
     @Override
     public void dibujarGrafo(){
         graficador.paint();
-        System.out.println("\nDibujo grafo");
-        System.out.println("Cantidad de vertices: " + cantVertices);
-        System.out.println("Cantidad de aristas: " + cantAristas);
-        System.out.println("Cantidad de lazos: " + cantLazos);
-        System.out.println("Es dirigido: " + dirigido);
         System.out.println(toString());
     }
 
@@ -107,6 +102,10 @@ public class ListaAdyacencia implements Grafo{
     public boolean quitarArista(int origen, int destino) {
         boolean sePudo;
         sePudo = eliminarArista(origen, destino);
+        if (sePudo) {
+            if (origen == destino) cantLazos--;
+            cantAristas--;
+        }
         if (!dirigido && sePudo) {
             eliminarArista(destino, origen);
         }
@@ -118,8 +117,6 @@ public class ListaAdyacencia implements Grafo{
             for (int i = 0; i < ady.size(); i++) {
                 if (ady.get(i).getValor() == d) {
                     ady.remove(i);
-                    if (o == d) cantLazos--;
-                    cantAristas--;
                     return true;
                 }
             }

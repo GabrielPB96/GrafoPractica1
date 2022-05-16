@@ -25,4 +25,9 @@ public class Vecino {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "(" + this.valor + ", " + this.peso + ")";
+    }
 }

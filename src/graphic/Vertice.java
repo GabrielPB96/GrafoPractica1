@@ -2,10 +2,10 @@ package graphic;
 
 import graphic.geo.Punto;
 
-import java.awt.Font;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Color;
+import java.awt.Font;
 
 public class Vertice{
     private Punto centro;
