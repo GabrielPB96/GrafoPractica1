@@ -70,7 +70,7 @@ Aplicando esta formula podemos verificar si un grafo es completo.
 
 Para un grafo dirigido podemos hacer una pequeña modificación a esta formula, si el grafo tiene dos aristas por cada par de vertices este seria la cantidad maxima de aristas que puede tener esto es *_2(nC2)_*, y la cantidad minima de aristas que puede tener y ser completo es *_nC2_*, entonces la cantidad de aristas de un grafo dirigido debe estar entre estos dos valores *_nC2 >= cantAristas <= 2(nC2)_*.
 
-### Es Grafo Ciclo. [métodos](#métodos)
+### Es Grafo Ciclo.
 Un grafo ciclo tiene la misma cantidad de vertices y aristas.
 
 *Para un grafo dirigido verificados que las aristas tengan la misma dirección.*
