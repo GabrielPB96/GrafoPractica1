@@ -18,22 +18,22 @@ public class VerificadorDirigido extends Verificador {
 
     @Override
     public boolean esGrafoCiclo() {
-        int ini = 0, v = ini, ant = grafo.getNumVertices() - 1;
+        int inicio = 0, v = inicio, anterior = grafo.getNumVertices() - 1;
         for(int i = 0; i < grafo.getNumVertices(); i++) {
             ArrayList<Vecino> vecinos = (ArrayList<Vecino>) grafo.getAdyacentes(v);
             if(vecinos.size() > 2) return false;
             else{
                 int aux = v;
                 for (Vecino vecino : vecinos) {
-                    if(vecino.getValor() != ant){
+                    if(vecino.getValor() != anterior){
                         aux = vecino.getValor();
                     }
                 }
-                ant = v;
+                anterior = v;
                 v = aux;
             }
         }
-        return ini == v;
+        return inicio == v;
     }
 
     @Override

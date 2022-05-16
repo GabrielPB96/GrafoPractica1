@@ -27,26 +27,26 @@ public class ListaAdyacencia implements Grafo{
     }
 
     @Override
-    public void insertarArista(int i, int j) {
-        ArrayList<Vecino> ady = grafo.get(i);
-        ady.add(new Vecino(j, Double.MIN_VALUE));
+    public void insertarArista(int origen, int destino) {
+        ArrayList<Vecino> ady = grafo.get(origen);
+        ady.add(new Vecino(destino, Double.MIN_VALUE));
         if (!dirigido) {
-            ArrayList<Vecino> ady2 = grafo.get(j);
-            ady2.add(new Vecino(i, Double.MIN_VALUE));
+            ArrayList<Vecino> ady2 = grafo.get(destino);
+            ady2.add(new Vecino(origen, Double.MIN_VALUE));
         }
-        if (i == j) cantLazos++;
+        if (origen == destino) cantLazos++;
         cantAristas++;
     }
 
     @Override
-    public void insertarArista(int i, int j, double peso) {
-        ArrayList<Vecino> ady = grafo.get(i);
-        ady.add(new Vecino(j, peso));
+    public void insertarArista(int origen, int destino, double peso) {
+        ArrayList<Vecino> ady = grafo.get(origen);
+        ady.add(new Vecino(destino, peso));
         if (!dirigido) {
-            ArrayList<Vecino> ady2 = grafo.get(j);
-            ady2.add(new Vecino(i, peso));
+            ArrayList<Vecino> ady2 = grafo.get(destino);
+            ady2.add(new Vecino(origen, peso));
         }
-        if (i == j) cantLazos++;
+        if (origen == destino) cantLazos++;
         cantAristas++;
     }
 
@@ -73,18 +73,16 @@ public class ListaAdyacencia implements Grafo{
     }
 
     @Override
-    public double getPesoArista(int i, int j) throws Exception {
-        ArrayList<Vecino> ady = grafo.get(i);
+    public double getPesoArista(int origen, int destino) throws Exception {
+        ArrayList<Vecino> ady = grafo.get(origen);
         double peso = Double.MIN_VALUE;
         Vecino v = null;
         if (ady == null) throw new Exception("La arista no existe");
-        if (ady != null) {
-            for (int k = 0; k < ady.size() && v == null; k++) {
-                if (ady.get(k).getValor() == j) v = ady.get(k);
-            }
-            if (v != null) peso = v.getPeso();
-            else throw new Exception("La arista no existe");
+        for (int k = 0; k < ady.size() && v == null; k++) {
+            if (ady.get(k).getValor() == destino) v = ady.get(k);
         }
+        if (v != null) peso = v.getPeso();
+        else throw new Exception("La arista no existe");
         return peso;
     }
 
