@@ -29,7 +29,8 @@
   }
 ```
 
-### Número de Vertices. [métodos](#métodos)
+### Número de Vertices.
+
 Devolvemos la variable que cuenta los Vertices.
 ```java
   @Override
@@ -38,7 +39,7 @@ Devolvemos la variable que cuenta los Vertices.
   }
 ```
 
-### Número de Aristas. [métodos](#métodos)
+### Número de Aristas.
 Devolvemos la variable que cuenta las Aristas.
 ```java
   @Override
@@ -47,7 +48,7 @@ Devolvemos la variable que cuenta las Aristas.
   }
 ```
 
-### Existe Arista. [métodos](#métodos)
+### Existe Arista.
 Obtenemos los adyacentes del vertice origen, controlando que este exista, posteriormente verificamos si el vertice destino se encuentra en los adyacentes del vertice origen.
 ```java
   @Override
@@ -63,7 +64,7 @@ Obtenemos los adyacentes del vertice origen, controlando que este exista, poster
   }
 ```
 
-### Peso Arista [métodos](#métodos)
+### Peso Arista.
 Obtenemos los adyacentes del vertice origen controlando que este existe. Buscamos el Vecino que coincida con el vertice destino y obtenemos su peso.
 ```java
   @Override
@@ -80,7 +81,7 @@ Obtenemos los adyacentes del vertice origen controlando que este existe. Buscamo
       return peso;
   }
 ```
-### Insertar Arista. [métodos](#métodos)
+### Insertar Arista.
 Insertamos un nuevo elemento en la lista de adyacencia del vertice origen. Incrementamos el contador de aristas y si el origen es igual al destino, incrementamos el contador de lazos.
 ```java
   @Override
@@ -95,7 +96,7 @@ Insertamos un nuevo elemento en la lista de adyacencia del vertice origen. Incre
       cantAristas++;
   }
 ```
-### Obtener Adyacentes. [métodos](#métodos)
+### Obtener Adyacentes.
 Retornamos la lista asociada al vertice, si este no existe, devolvemos una lista vacia.
 ```java
     @Override
@@ -104,9 +105,9 @@ Retornamos la lista asociada al vertice, si este no existe, devolvemos una lista
         return (ady != null) ? ady : new ArrayList<>();
     }
 ```
-### Dibujar Grafo. [métodos](#métodos)
+### Dibujar Grafo.
 
-### Quitar Arista. [métodos](#métodos)
+### Quitar Arista.
 
 
 *Para los métodos restantes se créo una clase abstracta Verificador y dos subclases, VerificadorDirigido y VerificadorNoDirigido.*
@@ -139,7 +140,7 @@ public abstract class Verificador {
 ```
 
 
-### Es Grafo Completo. [métodos](#métodos)
+### Es Grafo Completo.
 Para que un grafo sea completo debe existir una arista para cada par de vertices.
 
 Para un grafo no dirigido esto se puede verificar usando combinaciones, ya que la arista A-B es igual a B-A, las combinaciones nos ayudan a no tomar ecuenta las aristas repetidas.
@@ -188,7 +189,7 @@ Un grafo ciclo tiene la misma cantidad de vertices y aristas.
       return inicio == v;
   }
 ```
-### Es Grafo Rueda. [métodos](#métodos)
+### Es Grafo Rueda.
 
-### Existe Bucle. [métodos](#métodos)
+### Existe Bucle.
 
