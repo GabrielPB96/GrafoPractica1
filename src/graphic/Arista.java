@@ -103,6 +103,7 @@ public class Arista {
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(color);
         g2.setStroke(new BasicStroke(3));
+
         if(!oF.equals(dF)) {
             Linea recta = (flecha) ? new Flecha(o1, d1) : new Recta(o1, d1);
             recta.paint(g2);

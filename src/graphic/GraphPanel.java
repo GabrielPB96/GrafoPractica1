@@ -33,7 +33,6 @@ public class GraphPanel extends JPanel {
 
     public void addVertices(Vertice[] v) {
         for (Vertice vertice : v) {
-            //System.out.println(vertice.getLocation());
             vertices.add(vertice);
         }
     }

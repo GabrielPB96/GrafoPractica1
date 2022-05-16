@@ -31,7 +31,6 @@ public class Flecha implements Linea {
     }
 
     public void paint(Graphics2D g) {
-        g.setColor(Color.BLACK);
         Recta recta = new Recta(origen, destino);
         Recta arista1 = obtenerArista(45);
         Recta arista2 = obtenerArista(-45);

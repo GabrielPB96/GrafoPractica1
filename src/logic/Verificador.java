@@ -14,20 +14,12 @@ public abstract class Verificador {
     public abstract boolean esGrafoRueda();
 
     protected boolean existeBucle() {
-        if(grafo instanceof ListaAdyacencia) {
-            ListaAdyacencia g = (ListaAdyacencia) grafo;
-            HashMap<Integer, ArrayList<Vecino>> gM = g.getGrafo();
-            for(Integer i : gM.keySet()) {
-                ArrayList<Vecino> vecinos = gM.get(i);
-                for(Vecino v : vecinos) {
-                    if(v.getValor() == i) return true;
-                }
-            }
-        }else{
-            MatrizAdyacencia g = (MatrizAdyacencia) grafo;
-            int[][] matriz = g.getMatriz();
-            for (int i = 0; i < matriz.length; i++) {
-                if(matriz[i][i] != 0) return true;
+        ListaAdyacencia g = (ListaAdyacencia) grafo;
+        HashMap<Integer, ArrayList<Vecino>> gM = g.getGrafo();
+        for(Integer i : gM.keySet()) {
+            ArrayList<Vecino> vecinos = gM.get(i);
+            for(Vecino v : vecinos) {
+                if(v.getValor() == i) return true;
             }
         }
         return false;

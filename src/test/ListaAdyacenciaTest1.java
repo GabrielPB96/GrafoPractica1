@@ -5,6 +5,8 @@ import logic.Vecino;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -83,7 +85,7 @@ public class ListaAdyacenciaTest1 {
 
     @Test
     public void esCompleto() {
-        assertFalse(grafo.esCompleto());
+        assertTrue(grafo.esCompleto());
     }
 
     @Test
@@ -99,5 +101,24 @@ public class ListaAdyacenciaTest1 {
     @Test
     public void existeBucle() {
         assertFalse(grafo.existeBucle());
+    }
+
+    public static void main(String[] args) {
+        ListaAdyacencia grafo = new ListaAdyacencia(true);
+        int[] nodos = {0, 1, 2, 3};
+
+        for (int nodo : nodos) {
+            grafo.insertarVertice(nodo);
+        }
+
+        grafo.insertarArista(0, 1, 3);
+        grafo.insertarArista(3, 0, 3);
+        grafo.insertarArista(3, 1, 2);
+        grafo.insertarArista(3, 2, 10);
+        grafo.insertarArista(2, 1, 9);
+        grafo.insertarArista(2, 0, 6);
+
+        grafo.dibujarGrafo();
+
     }
 }

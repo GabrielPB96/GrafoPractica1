@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class ListaAdyacenciaTest2 {
+public class ListaAdyacenciaTest3 {
     private ListaAdyacencia grafo;
     @Before
     public void setUp() {
         grafo = new ListaAdyacencia(false);
-        int[] nodos = {0, 1, 2, 3};
+        int[] nodos = {0, 1, 2, 3, 4};
 
         for (int nodo : nodos) {
             grafo.insertarVertice(nodo);
@@ -23,20 +23,24 @@ public class ListaAdyacenciaTest2 {
         grafo.insertarArista(0, 1);
         grafo.insertarArista(0, 2);
         grafo.insertarArista(0, 3);
+        grafo.insertarArista(0, 4);
         grafo.insertarArista(1, 2);
         grafo.insertarArista(1, 3);
         grafo.insertarArista(2, 3);
+        grafo.insertarArista(2, 4);
+        grafo.insertarArista(3, 4);
+        grafo.insertarArista(4, 1);
 
     }
 
     @Test
     public void getNumVertices() {
-        assertEquals(4, grafo.getNumVertices());
+        assertEquals(5, grafo.getNumVertices());
     }
 
     @Test
     public void getNumAristas() {
-        assertEquals(6, grafo.getNumAristas());
+        assertEquals(10, grafo.getNumAristas());
     }
 
     @Test
@@ -45,24 +49,13 @@ public class ListaAdyacenciaTest2 {
     }
 
     @Test
-    public void getPesoArista() throws Exception {
-        double peso = grafo.getPesoArista(0, 1);
-        assertEquals(Double.MIN_VALUE, peso, 0.001);
+    public void noExisteArista() {
+        assertFalse(grafo.existeArista(0, 0));
     }
 
     @Test
-    public void getAdyacentesCero() {
-        ArrayList<Vecino> adyacentes = new ArrayList<Vecino>();
-        adyacentes.add(new Vecino(3, Double.MIN_VALUE));
-        adyacentes.add(new Vecino(1, Double.MIN_VALUE));
-        adyacentes.add(new Vecino(2, Double.MIN_VALUE));
-
-        boolean iguales = true;
-        for (Vecino vecino : grafo.getAdyacentes(0)) {
-            if(!adyacentes.contains(vecino)) iguales = false;
-        }
-
-        assertTrue(iguales);
+    public void getPesoArista() throws Exception{
+        assertEquals(Double.MIN_VALUE, grafo.getPesoArista(0, 1), 0.0);
     }
 
     @Test
@@ -71,6 +64,7 @@ public class ListaAdyacenciaTest2 {
         adyacentes.add(new Vecino(0, Double.MIN_VALUE));
         adyacentes.add(new Vecino(1, Double.MIN_VALUE));
         adyacentes.add(new Vecino(2, Double.MIN_VALUE));
+        adyacentes.add(new Vecino(4, Double.MIN_VALUE));
 
         boolean iguales = true;
         for (Vecino vecino : grafo.getAdyacentes(3)) {
@@ -82,8 +76,8 @@ public class ListaAdyacenciaTest2 {
 
     @Test
     public void quitarArista() {
-        grafo.quitarArista(0, 3);
-        assertFalse(grafo.existeArista(0, 3));
+        grafo.quitarArista(0, 1);
+        assertFalse(grafo.existeArista(0, 1));
     }
 
     @Test
@@ -98,7 +92,7 @@ public class ListaAdyacenciaTest2 {
 
     @Test
     public void esGrafoRueda() {
-        assertTrue(grafo.esGrafoRueda());
+        assertFalse(grafo.esGrafoRueda());
     }
 
     @Test
@@ -108,7 +102,7 @@ public class ListaAdyacenciaTest2 {
 
     public static void main(String[] args) {
         ListaAdyacencia grafo = new ListaAdyacencia(false);
-        int[] nodos = {0, 1, 2, 3};
+        int[] nodos = {0, 1, 2, 3, 4};
 
         for (int nodo : nodos) {
             grafo.insertarVertice(nodo);
@@ -117,9 +111,13 @@ public class ListaAdyacenciaTest2 {
         grafo.insertarArista(0, 1);
         grafo.insertarArista(0, 2);
         grafo.insertarArista(0, 3);
+        grafo.insertarArista(0, 4);
         grafo.insertarArista(1, 2);
         grafo.insertarArista(1, 3);
         grafo.insertarArista(2, 3);
+        grafo.insertarArista(2, 4);
+        grafo.insertarArista(3, 4);
+        grafo.insertarArista(4, 1);
 
         grafo.dibujarGrafo();
     }
