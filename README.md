@@ -1,7 +1,7 @@
 # **Práctica Grafos**
 > Pantoja Bustamante Gabriel
 
-El código base se encuentra en el paquete [***logic***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/logic), la clase [***Main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main/Main.java) en el paquete [***main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main).
+El código base se encuentra en el paquete [***logic***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/logic), la clase [***Main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main/Main.java) en el paquete [***main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main) [^1].
 
 ## **Implementación Base**
 
@@ -99,5 +99,4 @@ Un grafo ciclo tiene la misma cantidad de vertices y aristas.
 
 ![grafo 3](./assets/grafo3.png)
 
-
-
+[^1]: Instalar Java16 e IntelliJ.
