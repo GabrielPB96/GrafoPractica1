@@ -152,9 +152,9 @@ Un grafo ciclo tiene la misma cantidad de vertices y aristas.
 
 > En teoría de grafos, un grafo rueda (Wn), o simplemente rueda, es un grafo con n vértices que se forma conectando un único vértice a todos los vértices de un ciclo-(n-1).
 
-En un grafo no dirigido la cantidad de aristas debe ser igual a ***2(n-1)*** (donde n es la cantidad de vertices), esto debido a que si quitados el vertice rueda la cantidad de aristas es igual a ***(n-1)***, a esto le sumamos la el grado de dicho vertice, que tambien es ***(n-1)***.
+En un grafo no dirigido la cantidad de aristas debe ser igual a ***2(n-1)*** (donde n es la cantidad de vertices), esto debido a que si quitados el vertice rueda la cantidad de aristas es igual a ***(n-1)***, a esto le sumamos el grado de dicho vertice, que tambien es ***(n-1)***.
 
-Para un grafo dirigido ...
+Para un grafo dirigido el número maximo de aristas sera ***4(n-1)*** y el número minimo ***2(n-1)***, para que el grafo sea rueda la cantidad de aristas debe estar en este rango.
 
 ```java
   @return True si el grafo es rueda, False en otros casos.
@@ -163,18 +163,46 @@ Para un grafo dirigido ...
 
 ## **Existe Bucle.**
 
+Si la cantidad de lazos es mayor a cero, entonces si existe un bucle.
+
+```java
+  @return True si existe bucle, False en otros casos.
+  boolean existeBucle()
+```
+
 
 ## **Resultados**
 ## Grafo 1
 
-![grafo 1](./assets/grafo1.png)
+|      |      |
+|------|------|
+|![grafo 1](./assets/grafo1.png)|![resultado1](./assets/resultado1.png)|
+
+|      |      |
+|------|------|
+|![grafico1](./assets/gR1.png)|![grafico1](./assets/gR12.png)|
+
+
 
 ## Grafo 2
 
-![grafo 2](./assets/grafo2.png)
+|      |      |
+|------|------|
+|![grafo 2](./assets/grafo2.png)|![resultado2](./assets/resultado2.png)|
+
+|||
+|-----|-----|
+|![](./assets/gR2.png)|![](./assets/gR21.png)|
 
 ## Grafo 3
 
-![grafo 3](./assets/grafo3.png)
+|      |      |
+|------|------|
+|![grafo 3](./assets/grafo3.png)|![resultado3](./assets/resultado3.png)|
+
+|      |      |
+|------|------|
+|![](./assets/gR3.png)|![](./assets/gR31.png)|
+
 
 [^1]: Instalar Java16 e IntelliJ.
