@@ -40,6 +40,6 @@ public class VerificadorDirigido extends Verificador {
     public boolean esGrafoRueda() {
         int nVertices = grafo.getNumVertices();
         int nAristas    = grafo.getNumAristas();
-        return 4*(nVertices-1) == nAristas;
+        return 4*(nVertices-1) >= nAristas && (nVertices-1) <= nAristas;
     }
 }

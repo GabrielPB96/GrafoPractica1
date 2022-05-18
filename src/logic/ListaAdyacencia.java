@@ -60,6 +60,10 @@ public class ListaAdyacencia implements Grafo{
         return cantAristas;
     }
 
+    public int getNumLazos() {
+        return cantLazos;
+    }
+
     @Override
     public boolean existeArista(int origen, int destino) {
         ArrayList<Vecino> adyO = grafo.get(origen);

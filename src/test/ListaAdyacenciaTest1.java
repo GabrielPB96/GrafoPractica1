@@ -95,7 +95,7 @@ public class ListaAdyacenciaTest1 {
 
     @Test
     public void esGrafoRueda() {
-        assertFalse(grafo.esGrafoRueda());
+        assertTrue(grafo.esGrafoRueda());
     }
 
     @Test

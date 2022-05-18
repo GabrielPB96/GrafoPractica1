@@ -2,6 +2,7 @@ package logic;
 public interface Grafo {
     public abstract int getNumVertices();
     public abstract int getNumAristas();
+    public abstract int getNumLazos();
     public abstract boolean existeArista(int origen, int destino) throws Exception;
     public abstract double getPesoArista(int i, int j) throws Exception;
     public abstract void insertarArista(int i, int j) throws Exception;
