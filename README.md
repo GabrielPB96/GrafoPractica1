@@ -1,7 +1,7 @@
 # **Práctica Grafos**
 > Pantoja Bustamante Gabriel
 
-El código base se encuentra en el paquete [***logic***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/logic), la clase [***Main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main/Main.java) en el paquete [***main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main).
+El código base se encuentra en el paquete [***logic***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/logic), la clase [***Main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main/Main.java) en el paquete [***main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main) [^1].
 
 ## **Implementación Base**
 
@@ -67,14 +67,14 @@ El paquete [***graphic***](https://github.com/GabrielPB96/GrafoPractica1/tree/ma
 ![diagrama verificador](./assets/diagramaV.png)
 
 ## **Es Grafo Completo.**
-Para que un grafo sea completo debe existir una arista paracada    par de vertices.
+Para que un grafo sea completo debe existir una arista para cada    par de vertices.
 Para un grafo no dirigido esto se puede verificar usando   combinaciones, ya que la arista A-B es igual a B-A, las   combinaciones nos ayudan a no tomar en cuenta las aristas repetidas.
-La cantidad de aristas debe ser igual a **_nC2_** donde n esla   cantidad de vertices.
+La cantidad de aristas debe ser igual a **_nC2_** donde n es la   cantidad de vertices.
 
 ![formula](./assets/f1.png)
 
 Aplicando esta formula podemos verificar si un grafo es completo.
-Para un grafo dirigido podemos hacer una pequeñamodificación a     esta formula, si el grafo tiene dosaristas por cada par de     vertices este seria la cantidadmaxima de aristas que puede     tener esto es ***2(nC2)***, yla cantidad minima de aristas que   puede tener y sercompleto es **_nC2_**, entonces la cantidad de    aristas deun grafo dirigido debe estar entre estos dos valores   ***nC2 >= cantAristas <= 2(nC2)***.
+Para un grafo dirigido podemos hacer una pequeña modificación a     esta formula, si el grafo tiene dos aristas por cada par de     vertices este seria la cantidad maxima de aristas que puede     tener esto es ***2(nC2)***, y la cantidad minima de aristas que   puede tener y ser completo es **_nC2_**, entonces la cantidad de    aristas de un grafo dirigido debe estar entre estos dos valores   ***nC2 >= cantAristas <= 2(nC2)***.
 
 ## **Es Grafo Ciclo.**
 Un grafo ciclo tiene la misma cantidad de vertices y aristas.
@@ -99,5 +99,4 @@ Un grafo ciclo tiene la misma cantidad de vertices y aristas.
 
 ![grafo 3](./assets/grafo3.png)
 
-
-
+[^1]: Instalar Java16 e IntelliJ.
