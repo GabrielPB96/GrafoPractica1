@@ -174,11 +174,11 @@ Si la cantidad de lazos es mayor a cero, entonces si existe un bucle.
 ## **Resultados**
 ## Grafo 1
 
-|      |      |
+|<center>Grafo</center>|<center>Resultados</center>|
 |------|------|
 |![grafo 1](./assets/grafo1.png)|![resultado1](./assets/resultado1.png)|
 
-|      |      |
+|<center>Gráfico Inicial</center>|<center>Gráfico Final</center>      |
 |------|------|
 |![grafico1](./assets/gR1.png)|![grafico1](./assets/gR12.png)|
 
@@ -186,21 +186,21 @@ Si la cantidad de lazos es mayor a cero, entonces si existe un bucle.
 
 ## Grafo 2
 
-|      |      |
+|<center>Grafo</center>|<center>Resultados</center>|
 |------|------|
 |![grafo 2](./assets/grafo2.png)|![resultado2](./assets/resultado2.png)|
 
-|||
+|<center>Gráfico Inicial</center>|<center>Gráfico Final</center>      |
 |-----|-----|
 |![](./assets/gR2.png)|![](./assets/gR21.png)|
 
 ## Grafo 3
 
-|      |      |
+|<center>Grafo</center>|<center>Resultados</center>|
 |------|------|
 |![grafo 3](./assets/grafo3.png)|![resultado3](./assets/resultado3.png)|
 
-|      |      |
+|<center>Gráfico Inicial</center>|<center>Gráfico Final</center>      |
 |------|------|
 |![](./assets/gR3.png)|![](./assets/gR31.png)|
 
