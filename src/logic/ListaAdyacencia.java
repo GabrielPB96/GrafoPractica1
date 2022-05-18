@@ -28,14 +28,7 @@ public class ListaAdyacencia implements Grafo{
 
     @Override
     public void insertarArista(int origen, int destino) {
-        ArrayList<Vecino> ady = grafo.get(origen);
-        ady.add(new Vecino(destino, Double.MIN_VALUE));
-        if (!dirigido) {
-            ArrayList<Vecino> ady2 = grafo.get(destino);
-            ady2.add(new Vecino(origen, Double.MIN_VALUE));
-        }
-        if (origen == destino) cantLazos++;
-        cantAristas++;
+        insertarArista(origen, destino, Double.MIN_VALUE);
     }
 
     @Override
