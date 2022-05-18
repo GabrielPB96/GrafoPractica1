@@ -4,9 +4,9 @@ import logic.ListaAdyacencia;
 
 public class Main {
     public static void main(String[] args) {
-        //grafo1();
+        grafo1();
         //grafo2();
-        grafo3();
+        //grafo3();
 
     }
 
