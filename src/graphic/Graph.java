@@ -2,6 +2,11 @@ package graphic;
 
 import javax.swing.JFrame;
 
+/**
+ * La clase grafica un grafo dado los vertices y las aristas.
+ * @author PANTOJA BUSTAMANTE GABRIEL
+ * @version 1.0
+ */
 public class Graph extends JFrame {
     private GraphPanel panel;
 
