@@ -29,6 +29,7 @@ El código base se encuentra en el paquete [***logic***](https://github.com/Gabr
     private boolean dirigido;
     private int cantVertices, cantAristas, cantLazos;
     private Verificador verificador;
+    private GraphicAdyacencia graficador;
   }
 ```
 
