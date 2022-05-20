@@ -1,7 +1,7 @@
 # **Práctica Grafos**
 > Pantoja Bustamante Gabriel
 
-El código base se encuentra en el paquete [***logic***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/logic), la clase [***Main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main/Main.java) en el paquete [***main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main) [^1].
+El código base se encuentra en el paquete [***logic***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/logic), la clase [***Main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main/Main.java) en el paquete [***main***](https://github.com/GabrielPB96/GrafoPractica1/tree/master/src/main).
 
 ## **Implementación Base**
 
@@ -56,7 +56,7 @@ Obtenemos los adyacentes del vertice origen, controlando que este exista, poster
   boolean existeArista(int origen, int destino)
 ```
 ## **Peso Arista.**
-Obtenemos los adyacentes del vertice origen controlando queeste existe. Buscamos el Vecino que coincida con elvertice destino y obtenemos su peso.
+Obtenemos los adyacentes del vertice origen controlando que este existe. Buscamos el Vecino que coincida con el vertice destino y obtenemos su peso.
 
 ```java
   @param origen - Referencia al origen de la arista.
@@ -204,6 +204,3 @@ Si la cantidad de lazos es mayor a cero, entonces si existe un bucle.
 |<center>Gráfico Inicial</center>|<center>Gráfico Final</center>      |
 |------|------|
 |![](./assets/gR3.png)|![](./assets/gR31.png)|
-
-
-[^1]: Instalar Java16 e IntelliJ.
