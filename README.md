@@ -47,7 +47,7 @@ El código base se encuentra en el paquete [***logic***](https://github.com/Gabr
 ```
 
 ## **Existe Arista.**
-Obtenemos los adyacentes del vertice origen, controlandoque    este exista, posteriormente verificamos si el verticedestino se   encuentra en los adyacentes del vertice origen.
+Obtenemos los adyacentes del vertice origen, controlando que este exista, posteriormente verificamos si el vertice destino se encuentra en los adyacentes del vertice origen.
 ```java
   @param origen - Referencia al origen de la arista.
   @param destino - Referencia al destino de la arista.
@@ -55,7 +55,7 @@ Obtenemos los adyacentes del vertice origen, controlandoque    este exista, post
   boolean existeArista(int origen, int destino)
 ```
 ## **Peso Arista.**
-Obtenemos los adyacentes del vertice origen controlando queeste    existe. Buscamos el Vecino que coincida con elvertice destino y   obtenemos su peso.
+Obtenemos los adyacentes del vertice origen controlando queeste existe. Buscamos el Vecino que coincida con elvertice destino y obtenemos su peso.
 
 ```java
   @param origen - Referencia al origen de la arista.
@@ -66,7 +66,7 @@ Obtenemos los adyacentes del vertice origen controlando queeste    existe. Busca
 ```
 
 ## **Insertar Arista.**
-Insertamos un nuevo elemento en la lista de adyacencia del vertice origen. Incrementamos el contador de aristas y si el     origen es igual al destino, incrementamos el contador de lazos.
+Insertamos un nuevo elemento en la lista de adyacencia del vertice origen. Incrementamos el contador de aristas y si el origen es igual al destino, incrementamos el contador de lazos.
 
 ```java
   @param origen - Referencia al origen de la nueva arista.
@@ -82,7 +82,7 @@ Insertamos un nuevo elemento en la lista de adyacencia del vertice origen. Incre
 ```
 
 ## **Obtener Adyacentes.**
-Retornar la lista asociada al vertice, si este noexiste,     devolvemos una lista vacia.
+Retornar la lista asociada al vertice, si este no existe, devolvemos una lista vacia.
 
 ```java
   @param vertice - Referencia al vertice del cual se obtendra los adyacentes.
@@ -121,14 +121,14 @@ Si el grafo es no dirigido hacemos el mismo proceso pero tomando el destino como
 
 > En teoría de grafos, un grafo completo es un grafo simple donde cada par de vértices está conectado por una arista.
 
-Para que un grafo sea completo debe existir una arista para cada    par de vertices.
-Para un grafo no dirigido esto se puede verificar usando   combinaciones, ya que la arista A-B es igual a B-A, las   combinaciones nos ayudan a no tomar en cuenta las aristas repetidas.
-La cantidad de aristas debe ser igual a **_nC2_** donde n es la   cantidad de vertices.
+Para que un grafo sea completo debe existir una arista para cada par de vertices.
+Para un grafo no dirigido esto se puede verificar usando combinaciones, ya que la arista A-B es igual a B-A, las combinaciones nos ayudan a no tomar en cuenta las aristas repetidas.
+La cantidad de aristas debe ser igual a **_nC2_** donde n es la cantidad de vertices.
 
 ![formula](./assets/f1.png)
 
 Aplicando esta formula podemos verificar si un grafo es completo.
-Para un grafo dirigido podemos hacer una pequeña modificación a     esta formula, si el grafo tiene dos aristas por cada par de     vertices este seria la cantidad maxima de aristas que puede     tener esto es ***2(nC2)***, y la cantidad minima de aristas que   puede tener y ser completo es **_nC2_**, entonces la cantidad de    aristas de un grafo dirigido debe estar entre estos dos valores   ***nC2 >= cantAristas <= 2(nC2)***.
+Para un grafo dirigido podemos hacer una pequeña modificación a esta formula, si el grafo tiene dos aristas por cada par de vertices este seria la cantidad maxima de aristas que puede tener esto es ***2(nC2)***, y la cantidad minima de aristas que puede tener y ser completo es **_nC2_**, entonces la cantidad de aristas de un grafo dirigido debe estar entre estos dos valores ***nC2 >= cantAristas <= 2(nC2)***.
 
 ```java
   @return True si el grafo es completo, False en otros casos.
